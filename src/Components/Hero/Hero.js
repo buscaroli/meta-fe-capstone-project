@@ -1,6 +1,6 @@
 import React from 'react'
 import StoreDetails from '../StoreDetails/StoreDetails'
-
+import styles from './Hero.module.css'
 const store = {
   title: 'Little Lemon',
   city: 'Chicago',
@@ -10,7 +10,7 @@ const store = {
 
 function Hero({ showButton }) {
   return (
-    <section className="hero">
+    <section className={styles.hero}>
       <div className="outerContainer">
         <div className="innerContainer">
           <StoreDetails

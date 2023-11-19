@@ -6,8 +6,8 @@
 
   --radius-std: 16px;
 
-  --font-sans: 'Karla';
-  --font-serif: 'Markazi Text';
+  --font-sans: 'Karla', sans-serif;
+  --font-serif: 'Markazi Text', serif;
 }
 
 body {
