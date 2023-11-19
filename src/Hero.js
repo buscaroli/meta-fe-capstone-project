@@ -18,12 +18,12 @@ function Hero({ showButton }) {
             city={store.city}
             description={store.description}
           />
+
           <div className="picture">
-            <img src="#" alt="picture of a tray of food held by a waiter" />
+            <img src="#" alt="tray of food held by a waiter" />
           </div>
         </div>
-        {showButton &
-        (
+        {showButton && (
           <div classsName="button" role="button">
             Reserve a Table
           </div>
