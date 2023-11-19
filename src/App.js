@@ -1,16 +1,12 @@
 import './App.css'
 import Header from './Header'
-import Hero from './Hero'
-import Specials from './Specials'
+import Main from './Main'
 
 function App() {
   return (
     <>
       <Header />
-      <main>
-        <Hero />
-        <Specials />
-      </main>
+      <Main />
       <footer>Footer</footer>
     </>
   )

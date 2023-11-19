@@ -3,7 +3,7 @@ import StoreDetails from './StoreDetails'
 
 const store = {
   title: 'Little Lemon',
-  city: 'Chcago',
+  city: 'Chicago',
   description:
     'We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.',
 }
