@@ -10,7 +10,7 @@ const store = {
 
 function Hero({ showButton }) {
   return (
-    <section class="hero">
+    <section className="hero">
       <div className="outerContainer">
         <div className="innerContainer">
           <StoreDetails
@@ -18,7 +18,8 @@ function Hero({ showButton }) {
             city={store.city}
             description={store.description}
           />
-          <div class="picture">
+
+          <div className="picture">
             <img src="#" alt="tray of food held by a waiter" />
           </div>
         </div>
