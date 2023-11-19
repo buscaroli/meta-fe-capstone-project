@@ -1,5 +1,5 @@
 import React from 'react'
-import Meal from './Meal'
+import Meal from '../Meal/Meal'
 
 function Specials() {
   return (

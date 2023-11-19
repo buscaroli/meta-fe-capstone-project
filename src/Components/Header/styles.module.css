@@ -1,0 +1,29 @@
+.header {
+  height: 80px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 300px;
+}
+
+.nav {
+
+}
+
+.list {
+  list-style: none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.list > li {
+ 
+}

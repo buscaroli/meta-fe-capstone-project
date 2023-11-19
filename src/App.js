@@ -1,8 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
-import Header from './Header'
-import Footer from './Footer'
-
-import './App.css'
+import Header from './Components/Header/Header'
+import Footer from './Components/Footer/Footer'
 import RouteMainPage from './RoutePages/RouteMainPage'
 import RouteReservePage from './RoutePages/RouteReservePage'
 

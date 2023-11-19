@@ -1,5 +1,5 @@
 import React from 'react'
-import StoreDetails from './StoreDetails'
+import StoreDetails from '../StoreDetails/StoreDetails'
 
 const store = {
   title: 'Little Lemon',

@@ -1,5 +1,5 @@
 import React from 'react'
-import LinksColumn from './LinksColumn'
+import LinksColumn from '../LinksColumn/LinksColumn'
 
 const linksData = [
   {
