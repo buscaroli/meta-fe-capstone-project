@@ -23,11 +23,11 @@ const linksData = [
       },
       {
         name: 'Order Online',
-        address: 'address4',
+        address: 'address5',
       },
       {
         name: 'Login',
-        address: 'address4',
+        address: 'address6',
       },
     ],
   },

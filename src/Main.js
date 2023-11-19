@@ -7,7 +7,7 @@ import About from './About'
 function Main() {
   return (
     <main>
-      <Hero />
+      <Hero showButton={true} />
       <Specials />
       <Testimonials />
       <About />

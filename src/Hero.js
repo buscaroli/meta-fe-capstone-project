@@ -8,9 +8,9 @@ const store = {
     'We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.',
 }
 
-function Hero() {
+function Hero({ showButton }) {
   return (
-    <section class="hero">
+    <section className="hero">
       <div className="outerContainer">
         <div className="innerContainer">
           <StoreDetails
@@ -18,13 +18,16 @@ function Hero() {
             city={store.city}
             description={store.description}
           />
-          <div class="picture">
+          <div className="picture">
             <img src="#" alt="picture of a tray of food held by a waiter" />
           </div>
         </div>
-        <div classsName="button" role="button">
-          Reserve a Table
-        </div>
+        {showButton &
+        (
+          <div classsName="button" role="button">
+            Reserve a Table
+          </div>
+        )}
       </div>
     </section>
   )
