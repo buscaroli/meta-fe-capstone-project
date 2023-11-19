@@ -3,13 +3,15 @@ import Hero from './Hero'
 import Specials from './Specials'
 import Testimonials from './Testimonials'
 import About from './About'
+import ReserveTable from './ReserveTable'
 
 function Main() {
   return (
     <main>
-      <Hero />
+      <Hero showButton={true} />
       <Specials />
       <Testimonials />
+      <ReserveTable />
       <About />
     </main>
   )
