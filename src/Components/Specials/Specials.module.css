@@ -1,0 +1,42 @@
+.container {
+  height: 480px;
+}
+
+.topBar {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(4, 40px);
+  align-items: center;
+}
+
+.sectionTitle {
+  grid-column: 3/5;
+  grid-row:3/4;
+  justify-self: left;
+
+  font-family: var(--font-serif);
+  font-size: var(--font-size-sectionTitle);
+  font-weight: var(--font-weight-sectionTitle);
+}
+
+.menuButton {
+  grid-column: 9/11;
+  grid-row: 3/4;
+  justify-self: stretch;
+  align-self: stretch;
+
+  background-color: var(--color-primary-light);
+  border-radius: var(--radius-std);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bold;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

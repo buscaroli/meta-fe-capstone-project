@@ -7,6 +7,12 @@
   --width-desktop: 1440px;
   --radius-std: 16px;
 
+  --font-size-sectionTitle: 40px;
+  --font-weight-sectionTitle: 400;
+
+  --font-size-cardTitle: 24px;
+  --font-weight-cardTitle: bold;
+
   --font-sans: 'Karla', sans-serif;
   --font-serif: 'Markazi Text', serif;
 }

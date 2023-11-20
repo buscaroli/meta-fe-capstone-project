@@ -7,11 +7,12 @@
 }
 
 .logo {
-  grid-column: 2/4;
+  grid-column: 3/5;
+  justify-self:left;
 }
 
 .nav {
-  grid-column: 4/12;
+  grid-column: 5/11;
   justify-self: end;
 }
 

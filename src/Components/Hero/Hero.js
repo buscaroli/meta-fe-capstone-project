@@ -23,7 +23,7 @@ const reserveButton = (
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      fontSize: '18px',
+      fontSize: '16px',
       fontWeight: 'bold',
     }}
   >

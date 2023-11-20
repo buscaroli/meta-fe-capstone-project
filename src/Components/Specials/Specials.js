@@ -1,33 +1,37 @@
 import React from 'react'
 import Meal from '../Meal/Meal'
+import styles from './Specials.module.css'
+import bruschetta from '../../assets/bruschetta.png'
+import salad from '../../assets/greekSalad.jpg'
+import dessert from '../../assets/lemonDessert.jpg'
 
 function Specials() {
   return (
-    <section className="container">
-      <div className="topbar">
-        <h5 className="sectionTitle">Specials</h5>
-        <div className="button" role="button">
+    <section className={styles.container}>
+      <div className={styles.topBar}>
+        <h5 className={styles.sectionTitle}>Specials</h5>
+        <div className={styles.menuButton} role="button">
           On the Menu
         </div>
       </div>
-      <div className="reviews">
+      <div className={styles.reviews}>
         <Meal
           title="Greek Salad"
           price="12.99"
-          picture=""
-          description="Great salad, the best I ever had, it tasted great, I particularly liked the fresh olive oil."
+          picture={bruschetta}
+          description="The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. "
         />
         <Meal
-          title="Greek Salad"
-          price="12.99"
-          picture=""
-          description="Great salad, the best I ever had, it tasted great, I particularly liked the fresh olive oil."
+          title="Bruschetta"
+          price="5.99"
+          picture={salad}
+          description="Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. "
         />
         <Meal
-          title="Greek Salad"
-          price="12.99"
-          picture=""
-          description="Great salad, the best I ever had, it tasted great, I particularly liked the fresh olive oil."
+          title="Lemon Dessert"
+          price="5.00"
+          picture={dessert}
+          description="This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined."
         />
       </div>
     </section>
