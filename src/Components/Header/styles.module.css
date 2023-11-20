@@ -1,0 +1,34 @@
+.header {
+  height: 80px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+.logo {
+  grid-column: 3/5;
+  justify-self:left;
+}
+
+.nav {
+  grid-column: 5/11;
+  justify-self: end;
+}
+
+.list {
+  list-style: none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.list > li {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--color-primary-dark);
+  margin-left: 10px;
+}

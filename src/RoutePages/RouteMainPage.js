@@ -1,7 +1,7 @@
 import React from 'react'
-import Main from '../Main'
-import Specials from '../Specials'
-import Testimonials from '../Testimonials'
+import Main from '../Components/Main/Main'
+import Specials from '../Components/Specials/Specials'
+import Testimonials from '../Components/Testimonials/Testimonials'
 
 function RouteMainPage() {
   return (
