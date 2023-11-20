@@ -1,6 +1,6 @@
 .storeDetails {
-  grid-column: 2/6;
-  grid-row: 0/4;
+  grid-column: 3/6;
+  grid-row: 1/5;
 }
 
 .title {
@@ -20,5 +20,5 @@
 .description {
   font-family: var(--font-sans);
   color: var(--color-secondary-grey);
-  max-width: 40%;
+  line-height: 1.5;
 }
