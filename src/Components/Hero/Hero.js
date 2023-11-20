@@ -1,6 +1,8 @@
 import React from 'react'
 import StoreDetails from '../StoreDetails/StoreDetails'
 import styles from './Hero.module.css'
+import pic from '../../assets/restaurantfood.jpg'
+
 const store = {
   title: 'Little Lemon',
   city: 'Chicago',
@@ -11,20 +13,23 @@ const store = {
 function Hero({ showButton }) {
   return (
     <section className={styles.hero}>
-      <div className="outerContainer">
-        <div className="innerContainer">
-          <StoreDetails
-            title={store.title}
-            city={store.city}
-            description={store.description}
-          />
+      <div className={styles.container}>
+        <StoreDetails
+          title={store.title}
+          city={store.city}
+          description={store.description}
+        />
 
-          <div className="picture">
-            <img src="#" alt="tray of food held by a waiter" />
-          </div>
+        <div className={styles.pictureContainer}>
+          <img
+            className={styles.picture}
+            src={pic}
+            alt="tray of food held by a waiter"
+          />
         </div>
+
         {showButton && (
-          <div classsName="button" role="button">
+          <div classsName={styles.button} role="button">
             Reserve a Table
           </div>
         )}

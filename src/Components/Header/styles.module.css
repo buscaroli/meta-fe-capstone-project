@@ -1,18 +1,18 @@
 .header {
-  height: 100px;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  height: 80px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  justify-items: center;
   align-items: center;
 }
 
 .logo {
-  width: 200px;
+  grid-column: 2/4;
 }
 
 .nav {
-
+  grid-column: 4/12;
+  justify-self: end;
 }
 
 .list {
