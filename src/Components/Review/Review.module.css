@@ -1,0 +1,48 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 20px);
+  background-color: var(--color-secondary-grey);
+  padding: 10px;
+  border-radius: var(--radius-std);
+}
+
+.ratingContainer {
+  grid-column: 1/13;
+  grid-row: 1/2;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: var(--font-sans);
+  font-size: var(--font-size-cardTitle);
+  font-weight: var(--font-weight-cardTitle);
+}
+
+.pictureContainer {
+  grid-column: 1/6;
+  grid-row: 3/8;
+}
+
+.picture {
+  width: 100%;
+  height: 100%;
+}
+
+.name {
+  grid-column: 7/13;
+  grid-row: 3/4;
+}
+
+.review {
+  grid-column: 1/13;
+  grid-row: 9/13;
+
+  color: var(--color-primary-dark);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-y: hidden;
+}
+
+

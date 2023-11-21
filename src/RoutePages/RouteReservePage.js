@@ -5,7 +5,7 @@ import ReserveTable from '../Components/ReserveTable/ReserveTable'
 function RouteReservePage() {
   return (
     <>
-      <Hero showButton={false} />
+      <Hero />
       <ReserveTable />
     </>
   )

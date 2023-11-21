@@ -1,7 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './styles.module.css'
 import logo from '../../assets/Logo.svg'
 function Header() {
+  const navigate = useNavigate()
+
+  const handleNavigateHome = () => {
+    navigate('/')
+  }
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -10,22 +17,38 @@ function Header() {
       <nav className={styles.nav}>
         <ul className={styles.list}>
           <li>
-            <a src="#">Home</a>
+            <a
+              className={styles.link}
+              href="#hero"
+              onClick={handleNavigateHome}
+            >
+              Home
+            </a>
           </li>
           <li>
-            <a src="#">About</a>
+            <a className={styles.link} href="#about">
+              About
+            </a>
           </li>
           <li>
-            <a src="#">Menu</a>
+            <a className={styles.link} href="#menu">
+              Menu
+            </a>
           </li>
           <li>
-            <a src="#">Reservations</a>
+            <a className={styles.link} href="#hero">
+              Reservations
+            </a>
           </li>
           <li>
-            <a src="#">Order Online</a>
+            <a className={styles.link} href="#hero">
+              Order Online
+            </a>
           </li>
           <li>
-            <a src="#">Login</a>
+            <a className={styles.link} href="#">
+              Login
+            </a>
           </li>
         </ul>
       </nav>
