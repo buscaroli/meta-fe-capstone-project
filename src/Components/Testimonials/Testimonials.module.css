@@ -1,5 +1,6 @@
 .container {
   height: 580px;
+  background-color: var(--color-primary-dark);
 }
 
 .sectionTitle {

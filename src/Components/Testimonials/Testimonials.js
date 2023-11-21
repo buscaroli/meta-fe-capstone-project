@@ -1,13 +1,33 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect, useEffect } from 'react'
 import Review from '../Review/Review'
 import styles from './Testimonials.module.css'
 import { faker } from '@faker-js/faker'
 
+const tempData = [
+  {
+    name: 'George',
+    picUrl: '',
+    rating: 4,
+    review: 'Great food, would book again!',
+  },
+  {
+    name: 'George',
+    picUrl: '',
+    rating: 4,
+    review: 'Great food, would book again!',
+  },
+  {
+    name: 'George',
+    picUrl: '',
+    rating: 4,
+    review: 'Great food, would book again!',
+  },
+]
 function Testimonials() {
-  const [data, setData] = useState([])
+  const [data, setData] = useState(tempData)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let dataArray = []
     let firstName = ''
     let picUrl = ''
@@ -18,7 +38,7 @@ function Testimonials() {
       firstName = faker.person.firstName()
       picUrl = faker.image.avatar()
       rating = Math.floor(Math.random() * 5) + 1
-      review = faker.word.words({ count: { min: 15, max: 40 } })
+      review = faker.word.words({ count: { min: 15, max: 25 } })
       dataArray.push({ firstName, picUrl, rating, review })
     }
     setData(dataArray)
