@@ -1,47 +1,47 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  /* width: max(20vw, 60px); */
-  width: 250px;
-
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 30px);
+  
 }
 
 .mealPictureContainer {
   overflow: hidden;
+  grid-column: 1/13;
+  grid-row: 1/6;
 }
 
 .mealPicture {
-  width: 250px;
-  height: 180px;
-  flex-shrink: 0;
+  
+  width: 100%;
+  height:100%;
+  object-fit: cover;
   border-top-left-radius: var(--radius-std);
   border-top-right-radius: var(--radius-std);
 }
 
 .titleAndPriceContainer, .textAndIconContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
-  flex-shrink: 0;
 }
 
 .titleAndPriceContainer {
   font-family: var(--font-serif);
   font-size: var(--font-size-cardTitle);
   font-weight: var(--font-weight-cardTitle);
+
+  justify-content: space-between;
+  grid-column: 1/13;
+  grid-row: 6/7;
 }
 
 .textAndIconContainer {
   font-weight: 600;
   font-family: var(--font-sans);
 
-  display: flex;
-  justify-content: start;
-  align-items: center;
+  justify-content: flex-start;
+  grid-column: 1/13;
+  grid-row: 12/13;
 
   color: var(--color-primary-dark);
 }
@@ -55,8 +55,8 @@
   font-size: 16px;
   line-height: 1.5;
   overflow-y: hidden;
-  flex-shrink: 2;
-  height: 140px;
+  grid-column: 1/13;
+  grid-row: 8/11;
 }
 
 .icon {
