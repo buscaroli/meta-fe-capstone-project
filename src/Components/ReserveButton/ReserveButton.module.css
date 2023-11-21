@@ -1,0 +1,17 @@
+.reserveButton {
+  background-color: var(--color-primary-light);
+  border-radius: '16px';
+  grid-column: '3/5';
+  grid-row: '7/8';
+  margin-top: '10px';
+  display: 'flex';
+  justify-content: 'center';
+  align-items: 'center';
+  font-size: '16px';
+  font-weight: 'bold';
+  border-style: 'none';
+}
+
+.hide {
+  display: hidden;
+}
