@@ -9,8 +9,6 @@ function Main() {
   return (
     <main>
       <Hero showButton={true} />
-      <Specials />
-      <Testimonials />
     </main>
   )
 }
