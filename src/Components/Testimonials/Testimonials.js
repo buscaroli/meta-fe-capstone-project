@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useLayoutEffect, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import Review from '../Review/Review'
 import styles from './Testimonials.module.css'
 import { faker } from '@faker-js/faker'
@@ -43,10 +43,6 @@ function Testimonials() {
     }
     setData(dataArray)
   }, [])
-
-  useEffect(() => {
-    console.log(data)
-  }, [data])
 
   return (
     <section className={styles.container}>

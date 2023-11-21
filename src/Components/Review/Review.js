@@ -1,12 +1,13 @@
 import React from 'react'
 import styles from './Review.module.css'
+import StarRating from '../StarRating/StarRating'
 
 function Review({ name, picture, rating, review }) {
   return (
     <article className={styles.container}>
       <div className={styles.ratingContainer}>
         <h6 className={styles.ratingText}>Rating:</h6>
-        <div className={styles.rating}>{rating}</div>
+        <StarRating rating={rating} />
       </div>
 
       <div className={styles.pictureContainer}>
