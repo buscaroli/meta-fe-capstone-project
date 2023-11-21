@@ -1,0 +1,29 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 25px);
+
+  background-color: var(--color-primary-dark);
+  color: var(--color-secondary-grey);
+}
+
+.logoContainer {
+  grid-column: 3/4;
+  grid-row: 2/12;
+  color: var(--color-secondary-grey);
+}
+
+.logo {
+  color: var(--color-secondary-grey);
+  width: 100%;
+  height: 100%;
+}
+
+.linksContainer {
+  grid-column: 5/11;
+  grid-row: 2/12;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}

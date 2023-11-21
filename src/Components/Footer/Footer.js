@@ -1,5 +1,7 @@
 import React from 'react'
 import LinksColumn from '../LinksColumn/LinksColumn'
+import styles from './Footer.module.css'
+import logoFooter from '../../assets/logo_footer_white.png'
 
 const linksData = [
   {
@@ -7,27 +9,27 @@ const linksData = [
     links: [
       {
         name: 'Home',
-        address: 'address1',
+        address: '',
       },
       {
         name: 'About',
-        address: 'address2',
+        address: '',
       },
       {
         name: 'Menu',
-        address: 'address3',
+        address: '',
       },
       {
         name: 'Reservations',
-        address: 'address4',
+        address: '',
       },
       {
         name: 'Order Online',
-        address: 'address5',
+        address: '',
       },
       {
         name: 'Login',
-        address: 'address6',
+        address: '',
       },
     ],
   },
@@ -35,12 +37,12 @@ const linksData = [
     title: 'Contact',
     links: [
       {
-        name: 'Phone Number',
-        address: 'address1',
+        name: 'phone: (+44)0714-123456',
+        address: 'tel:123456',
       },
       {
-        name: 'e-Mail',
-        address: 'address2',
+        name: 'email: contact@little-lemon.biz',
+        address: 'mailto: contact@lil-lemon.biz',
       },
     ],
   },
@@ -69,11 +71,15 @@ const linksData = [
 
 function Footer() {
   return (
-    <footer>
-      <div className="logo">
-        <img src="#" alt="logo of the restaurant with a lemon" />
+    <footer className={styles.container}>
+      <div className={styles.logoContainer}>
+        <img
+          className={styles.logo}
+          src={logoFooter}
+          alt="logo of the restaurant with a lemon"
+        />
       </div>
-      <div className="linksContainer">
+      <div className={styles.linksContainer}>
         <LinksColumn data={linksData} pos="0" />
         <LinksColumn data={linksData} pos="1" />
         <LinksColumn data={linksData} pos="2" />

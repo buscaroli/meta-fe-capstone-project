@@ -1,0 +1,19 @@
+.linksColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* inline styling as component is generated on the go
+   and style would not apply
+.footerLink {
+
+}
+*/

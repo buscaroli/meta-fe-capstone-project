@@ -11,7 +11,6 @@ function Main() {
       <Hero showButton={true} />
       <Specials />
       <Testimonials />
-      <About />
     </main>
   )
 }

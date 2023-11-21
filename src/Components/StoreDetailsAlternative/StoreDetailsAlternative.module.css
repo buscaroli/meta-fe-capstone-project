@@ -1,0 +1,25 @@
+.storeDetails {
+  grid-column: 3/6;
+  grid-row: 1/5;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 64px;
+  color: var(--color-primary-dark);
+}
+
+.city {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-weight: medium;
+  color: black;
+  margin-top: -70px;
+}
+
+.description {
+  font-family: var(--font-sans);
+  color: #444444;
+  line-height: 1.5;
+  font-weight: 500;
+}
