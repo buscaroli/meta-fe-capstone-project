@@ -8,8 +8,8 @@ function LinksColumn({ data, pos }) {
         <a
           style={{ color: '#EDEFEE', textDecoration: 'none' }}
           href={link.address}
-          target="_blank"
-          rel="noreferrer"
+          // target="_blank"
+          // rel="noreferrer"
         >
           {link.name}
         </a>

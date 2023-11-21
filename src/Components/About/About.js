@@ -13,7 +13,7 @@ const store = {
 
 function About() {
   return (
-    <section>
+    <section id="about">
       <div className={styles.container}>
         <div className={styles.text}>
           <StoreDetailsAlternative

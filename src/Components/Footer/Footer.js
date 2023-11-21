@@ -9,15 +9,15 @@ const linksData = [
     links: [
       {
         name: 'Home',
-        address: '',
+        address: '/',
       },
       {
         name: 'About',
-        address: '',
+        address: '/',
       },
       {
         name: 'Menu',
-        address: '',
+        address: '#menu',
       },
       {
         name: 'Reservations',

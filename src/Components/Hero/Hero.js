@@ -13,7 +13,7 @@ const store = {
 
 function Hero() {
   return (
-    <section className={styles.hero}>
+    <section id="hero" className={styles.hero}>
       <div className={styles.container}>
         <StoreDetails
           title={store.title}

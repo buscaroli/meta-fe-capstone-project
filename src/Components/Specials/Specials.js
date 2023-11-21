@@ -7,7 +7,7 @@ import dessert from '../../assets/lemonDessert.jpg'
 
 function Specials() {
   return (
-    <section className={styles.container}>
+    <section id="menu" className={styles.container}>
       <div className={styles.topBar}>
         <h5 className={styles.sectionTitle}>Specials</h5>
         <div className={styles.menuButton} role="button">

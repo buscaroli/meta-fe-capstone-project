@@ -22,13 +22,21 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  
 }
 
 
-.list > li {
+.link {
   font-family: var(--font-sans);
   font-size: 18px;
   font-weight: bold;
   color: var(--color-primary-dark);
   margin-left: 10px;
+  text-decoration: none;
+  transition: all 0.3s;
+  
+}
+
+.link:hover {
+  color: var(--color-primary-light);
 }
