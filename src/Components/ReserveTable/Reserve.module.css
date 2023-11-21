@@ -8,15 +8,32 @@
 }
 
 .title {
-  grid-column: 6/9;
-  grid-row: 1/2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   font-family: var(--font-serif);
   font-size: var(--font-size-sectionTitle);
   font-weight: var(--font-weight-sectionTitle);
 }
 
-.userDetails {
-  grid-column: 2/11;
-  grid-row: 1/4;
+
+
+.reserveButton {
+  background-color: var(--color-primary-light);
+  border-radius: var(--radius-std);
+  border-style: none;
+  padding: 14px;
+  margin: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
 }
