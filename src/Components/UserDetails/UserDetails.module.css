@@ -4,6 +4,10 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(4, 20px);
+
+  font-family: var(--font-sans);
+  font-size: 20px;
+  color: var(--color-primary-dark);
 }
 
 .firstNameLabel {
