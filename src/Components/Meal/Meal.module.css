@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 30px);
-  
 }
 
 .mealPictureContainer {
@@ -12,7 +11,6 @@
 }
 
 .mealPicture {
-  
   width: 100%;
   height:100%;
   object-fit: cover;

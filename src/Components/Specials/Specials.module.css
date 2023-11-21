@@ -1,5 +1,5 @@
 .container {
-  height: 480px;
+  height: 580px;
 }
 
 .topBar {
@@ -39,7 +39,6 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 50px, 1fr, 50px;
-  /* column-gap: 1fr; */
 }
 
 .meal1 {
