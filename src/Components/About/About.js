@@ -1,5 +1,4 @@
 import React from 'react'
-import StoreDetailsAlternative from '../StoreDetailsAlternative/StoreDetailsAlternative'
 import styles from './About.module.css'
 import chef1 from '../../assets/chef1.jpg'
 import chef2 from '../../assets/chef2.jpg'
@@ -15,15 +14,10 @@ function About() {
   return (
     <section id="about">
       <div className={styles.container}>
-        <div className={styles.text}>
-          <StoreDetailsAlternative
-            title={store.title}
-            city={store.city}
-            description={store.description}
-          />
-        </div>
+        <h2 className={styles.title}>{store.title}</h2>
+        <h4 className={styles.city}>{store.city}</h4>
+        <p className={styles.description}>{store.description}</p>
 
-        {/* <div className={styles.pictures}> */}
         <div className={styles.pic1Container}>
           <img
             className={styles.pic1}
@@ -39,8 +33,6 @@ function About() {
             alt="portrait of Adrian and Mario cooking"
           />
         </div>
-
-        {/* </div> */}
       </div>
     </section>
   )
