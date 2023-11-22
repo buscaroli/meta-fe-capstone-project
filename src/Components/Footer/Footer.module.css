@@ -27,3 +27,36 @@
   justify-content: space-between;
   align-items: flex-start;
 }
+
+@media(max-width: 800px) {
+  .logoContainer {
+      grid-column: 2/3;
+      grid-row: 2/12;
+      color: var(--color-secondary-grey);
+    }
+  .linksContainer {
+    grid-column: 4/12;
+    grid-row: 2/12;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+@media(max-width: 600px) {
+  .logoContainer {
+    grid-column: 1/3;
+    grid-row: 2/12;
+    color: var(--color-secondary-grey);
+  }
+
+  .linksContainer {
+    grid-column: 4/13;
+    grid-row: 2/12;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
