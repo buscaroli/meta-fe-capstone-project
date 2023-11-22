@@ -14,22 +14,18 @@ const store = {
 function Hero() {
   return (
     <section id="hero" className={styles.hero}>
-      <div className={styles.container}>
-        <StoreDetails
-          title={store.title}
-          city={store.city}
-          description={store.description}
-        />
+      <h2 className={styles.title}>{store.title}</h2>
+      <h4 className={styles.city}>{store.city}</h4>
+      <p className={styles.description}>{store.description}</p>
 
-        <div className={styles.pictureContainer}>
-          <img
-            className={styles.picture}
-            src={pic}
-            alt="tray of food held by a waiter"
-          />
-        </div>
-        <ReserveButton show={true} />
+      <div className={styles.pictureContainer}>
+        <img
+          className={styles.picture}
+          src={pic}
+          alt="tray of food held by a waiter"
+        />
       </div>
+      <ReserveButton show={true} />
     </section>
   )
 }

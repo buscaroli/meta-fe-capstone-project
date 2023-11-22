@@ -1,11 +1,12 @@
 .storeDetails {
-  grid-column: 3/6;
-  grid-row: 1/5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .title {
   font-family: var(--font-serif);
-  font-size: 64px;
+  font-size: 54px;
   color: var(--color-primary-light);
 }
 
@@ -14,7 +15,6 @@
   font-size: 40px;
   font-weight: medium;
   color: var(--color-secondary-grey);
-  margin-top: -70px;
 }
 
 .description {

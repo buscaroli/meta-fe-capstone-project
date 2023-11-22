@@ -41,3 +41,57 @@ overflow: hidden;
   height: 100%;
   object-fit: cover;
 }
+
+.title {
+  grid-column: 3/7;
+  grid-row: 1/2;
+  font-family: var(--font-serif);
+  font-size: 54px;
+  color: var(--color-primary-dark);
+}
+
+.city {
+  grid-column: 3/7;
+  grid-row: 2/3;
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-weight: medium;
+  color: black;
+  
+}
+
+.description {
+  grid-column: 3/6;
+  grid-row: 4/9;
+  font-family: var(--font-sans);
+  color: #444444;
+  line-height: 1.5;
+  font-weight: 500;
+  overflow: hidden;
+}
+
+@media(max-width:800px) {
+
+  .title {
+    font-size: 44px;
+    line-height: 25px;
+  }
+
+  .city {
+    font-size: 30px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+    .pic1Container {
+      grid-column: 7/10;
+      
+    }
+  
+    .pic2Container {
+      grid-column: 8/11;
+      
+    }
+}
