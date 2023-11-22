@@ -49,3 +49,15 @@
   grid-column: 10/13;
   grid-row: 3/4;
 }
+
+@media(max-width: 800px) {
+  .container {
+    grid-column: 2/12;
+  }
+}
+
+@media(max-width: 600px) {
+  .container {
+    grid-column: 1/13;
+  }
+}
