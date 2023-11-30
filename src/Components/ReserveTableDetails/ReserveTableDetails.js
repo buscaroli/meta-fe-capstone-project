@@ -1,9 +1,40 @@
 import React from 'react'
-import styles from './UserPreferences.module.css'
+import styles from './ReserveTableDetails.module.css'
 
-function UserPreferences() {
+function ReserveTableDetails() {
   return (
     <article className={styles.container}>
+      {/* User Details */}
+      <label htmlFor="firstNameInput" className={styles.firstNameLabel}>
+        FirstName
+      </label>
+      <input
+        type="text"
+        id="firstNameInput"
+        className={styles.firstNameInput}
+      ></input>
+
+      <label htmlFor="lastNameInput" className={styles.lastNameLabel}>
+        LastName
+      </label>
+      <input
+        type="text"
+        id="lastNameInput"
+        className={styles.lastNameInput}
+      ></input>
+
+      <label htmlFor="emailInput" className={styles.emailLabel}>
+        eMail
+      </label>
+      <input type="email" id="emailInput" className={styles.emailInput}></input>
+
+      <label htmlFor="phoneInput" className={styles.phoneLabel}>
+        Mobile
+      </label>
+      <input type="tel" id="phoneInput" className={styles.phoneInput}></input>
+
+      {/* User Preferences */}
+
       <label className={styles.dateLabel} htmlFor="dateInput">
         Date
       </label>
@@ -61,8 +92,12 @@ function UserPreferences() {
         Preferences
       </label>
       <textarea id="preferencesInput" className={styles.preferencesInput} />
+
+      <button className={styles.reserveButton} form="reserveTableForm">
+        Reserve a Table
+      </button>
     </article>
   )
 }
 
-export default UserPreferences
+export default ReserveTableDetails
