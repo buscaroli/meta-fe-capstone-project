@@ -1,7 +1,46 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import styles from './ReserveTableDetails.module.css'
 
-function ReserveTableDetails() {
+function ReserveTableDetails({ fromDate, fromTime }) {
+  // effects
+  useEffect(() => {
+    console.log('today is ', fromDate)
+    console.log('now is ', fromTime)
+  })
+  // State
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [day, setDay] = useState('')
+  const [time, setTime] = useState('')
+
+  // input handles
+  const handleFirstName = (e) => {
+    setFirstName(e.target.value)
+  }
+
+  const handleLastName = (e) => {
+    setLastName(e.target.value)
+  }
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const handlePhone = (e) => {
+    setPhone(e.target.value)
+  }
+
+  const handleDate = (e) => {
+    setDay(e.target.value)
+  }
+
+  const handleTime = (e) => {
+    setTime(e.target.value)
+  }
+
   return (
     <article className={styles.container}>
       {/* User Details */}
@@ -11,6 +50,8 @@ function ReserveTableDetails() {
       <input
         type="text"
         id="firstNameInput"
+        value={firstName}
+        onChange={handleFirstName}
         className={styles.firstNameInput}
       ></input>
 
@@ -20,30 +61,60 @@ function ReserveTableDetails() {
       <input
         type="text"
         id="lastNameInput"
+        value={lastName}
+        onChange={handleLastName}
         className={styles.lastNameInput}
       ></input>
 
       <label htmlFor="emailInput" className={styles.emailLabel}>
         eMail
       </label>
-      <input type="email" id="emailInput" className={styles.emailInput}></input>
+      <input
+        type="email"
+        id="emailInput"
+        value={email}
+        onChange={handleEmail}
+        className={styles.emailInput}
+      ></input>
 
       <label htmlFor="phoneInput" className={styles.phoneLabel}>
         Mobile
       </label>
-      <input type="tel" id="phoneInput" className={styles.phoneInput}></input>
+      <input
+        type="tel"
+        id="phoneInput"
+        value={phone}
+        onChange={handlePhone}
+        className={styles.phoneInput}
+      ></input>
 
       {/* User Preferences */}
 
       <label className={styles.dateLabel} htmlFor="dateInput">
         Date
       </label>
-      <input type="date" id="dateInput" className={styles.dateInput} />
+      <input
+        type="date"
+        id="dateInput"
+        value={day}
+        min={fromDate}
+        onChange={handleDate}
+        className={styles.dateInput}
+      />
 
       <label className={styles.timeLabel} htmlFor="timeInput">
         Time
       </label>
-      <input type="time" id="timeInput" className={styles.timeInput} />
+      <input
+        type="time"
+        id="timeInput"
+        value={time}
+        min={fromTime}
+        required
+        pattern="[0-9]{2}:[0-9]{2}"
+        onChange={handleTime}
+        className={styles.timeInput}
+      />
 
       <label className={styles.outdoorLabel} htmlFor="outdoorInput">
         Position

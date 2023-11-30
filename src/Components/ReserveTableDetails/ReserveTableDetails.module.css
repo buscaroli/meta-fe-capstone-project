@@ -87,6 +87,10 @@
   grid-row: 7/8;
 }
 
+.timeInput:invalid {
+  color: red;
+}
+
 .outdoorLabel {
   grid-column: 1/3;
   grid-row: 9/10;
