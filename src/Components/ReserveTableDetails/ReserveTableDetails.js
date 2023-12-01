@@ -7,7 +7,12 @@ function ReserveTableDetails({ fromDate, fromTime }) {
   useEffect(() => {
     console.log('today is ', fromDate)
     console.log('now is ', fromTime)
+    console.log('outdoor is ', outdoor)
+    console.log('occasion is ', occasion)
+    console.log('diners is ', diners)
+    console.log('peferences is ', preferences)
   })
+
   // State
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -15,6 +20,10 @@ function ReserveTableDetails({ fromDate, fromTime }) {
   const [phone, setPhone] = useState('')
   const [day, setDay] = useState('')
   const [time, setTime] = useState('')
+  const [outdoor, setOutdoor] = useState('Indoor')
+  const [occasion, setOccasion] = useState('No')
+  const [diners, setDiners] = useState('1')
+  const [preferences, setPreferences] = useState('')
 
   // input handles
   const handleFirstName = (e) => {
@@ -39,6 +48,22 @@ function ReserveTableDetails({ fromDate, fromTime }) {
 
   const handleTime = (e) => {
     setTime(e.target.value)
+  }
+
+  const handleOutdoor = (e) => {
+    setOutdoor(e.target.value)
+  }
+
+  const handleOccasion = (e) => {
+    setOccasion(e.target.value)
+  }
+
+  const handleDiners = (e) => {
+    setDiners(e.target.value)
+  }
+
+  const handlePreferences = (e) => {
+    setPreferences(e.target.value)
   }
 
   return (
@@ -122,6 +147,8 @@ function ReserveTableDetails({ fromDate, fromTime }) {
       <select
         name="outdoorInput"
         id="outdoorInput"
+        value={outdoor}
+        onChange={handleOutdoor}
         className={styles.outdoorInput}
       >
         <option value="Indoor">Indoor</option>
@@ -135,6 +162,8 @@ function ReserveTableDetails({ fromDate, fromTime }) {
       <select
         name="occasionInput"
         id="occasionInput"
+        value={occasion}
+        onChange={handleOccasion}
         className={styles.occasionInput}
       >
         <option value="No">No Occasion</option>
@@ -150,6 +179,8 @@ function ReserveTableDetails({ fromDate, fromTime }) {
       <select
         name="dinersInput"
         id="dinersInput"
+        value={diners}
+        onChange={handleDiners}
         className={styles.dinersInput}
       >
         <option value="1">One</option>
@@ -162,7 +193,12 @@ function ReserveTableDetails({ fromDate, fromTime }) {
       <label className={styles.preferencesLabel} htmlFor="preferencesInput">
         Preferences
       </label>
-      <textarea id="preferencesInput" className={styles.preferencesInput} />
+      <textarea
+        id="preferencesInput"
+        value={preferences}
+        onChange={handlePreferences}
+        className={styles.preferencesInput}
+      />
 
       <button className={styles.reserveButton} form="reserveTableForm">
         Reserve a Table
