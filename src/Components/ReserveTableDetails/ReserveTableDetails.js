@@ -1,18 +1,8 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import styles from './ReserveTableDetails.module.css'
 
-function ReserveTableDetails({ fromDate, fromTime }) {
-  // effects
-  useEffect(() => {
-    // console.log('today is ', fromDate)
-    // console.log('now is ', fromTime)
-    // console.log('outdoor is ', outdoor)
-    // console.log('occasion is ', occasion)
-    // console.log('diners is ', diners)
-    // console.log('peferences is ', preferences)
-  })
-
+function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
   // State
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -74,6 +64,22 @@ function ReserveTableDetails({ fromDate, fromTime }) {
 
   const handlePreferences = (e) => {
     setPreferences(e.target.value)
+  }
+
+  const onSubmit = () => {
+    const userData = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      day,
+      time,
+      outdoor,
+      occasion,
+      diners,
+      preferences,
+    }
+    onReservationSubmit(userData)
   }
 
   return (
@@ -216,9 +222,13 @@ function ReserveTableDetails({ fromDate, fromTime }) {
         className={styles.preferencesInput}
       />
 
-      <button className={styles.reserveButton} form="reserveTableForm">
-        Reserve a Table
-      </button>
+      <input
+        type="submit"
+        className={styles.reserveButton}
+        form="reserveTableForm"
+        onClick={onSubmit}
+        value="Reserve a Table"
+      ></input>
     </article>
   )
 }

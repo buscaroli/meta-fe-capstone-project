@@ -135,8 +135,8 @@
   background-color: var(--color-primary-light);
   border-radius: var(--radius-std);
   border-style: none;
-  padding: 14px;
-  margin: 20px;
+  /* padding: 14px; */
+  margin-top: 10px;
 
   display: flex;
   justify-content: center;
