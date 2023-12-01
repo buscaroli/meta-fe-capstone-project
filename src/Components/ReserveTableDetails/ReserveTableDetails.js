@@ -5,12 +5,12 @@ import styles from './ReserveTableDetails.module.css'
 function ReserveTableDetails({ fromDate, fromTime }) {
   // effects
   useEffect(() => {
-    console.log('today is ', fromDate)
-    console.log('now is ', fromTime)
-    console.log('outdoor is ', outdoor)
-    console.log('occasion is ', occasion)
-    console.log('diners is ', diners)
-    console.log('peferences is ', preferences)
+    // console.log('today is ', fromDate)
+    // console.log('now is ', fromTime)
+    // console.log('outdoor is ', outdoor)
+    // console.log('occasion is ', occasion)
+    // console.log('diners is ', diners)
+    // console.log('peferences is ', preferences)
   })
 
   // State
@@ -27,10 +27,20 @@ function ReserveTableDetails({ fromDate, fromTime }) {
 
   // input handles
   const handleFirstName = (e) => {
+    if (firstName.length < 3 || firstName.length > 16) {
+      e.target.setCustomValidity('Between 3 and 16 letters.')
+    } else {
+      e.target.setCustomValidity('')
+    }
     setFirstName(e.target.value)
   }
 
   const handleLastName = (e) => {
+    if (lastName.length < 3 || lastName.length > 16) {
+      e.target.setCustomValidity('Between 3 and 16 letters.')
+    } else {
+      e.target.setCustomValidity('')
+    }
     setLastName(e.target.value)
   }
 
@@ -77,6 +87,8 @@ function ReserveTableDetails({ fromDate, fromTime }) {
         id="firstNameInput"
         value={firstName}
         onChange={handleFirstName}
+        required
+        pattern="\w{3,16}"
         className={styles.firstNameInput}
       ></input>
 
@@ -88,6 +100,8 @@ function ReserveTableDetails({ fromDate, fromTime }) {
         id="lastNameInput"
         value={lastName}
         onChange={handleLastName}
+        required
+        pattern="\w{3,16}"
         className={styles.lastNameInput}
       ></input>
 
@@ -99,6 +113,7 @@ function ReserveTableDetails({ fromDate, fromTime }) {
         id="emailInput"
         value={email}
         onChange={handleEmail}
+        required
         className={styles.emailInput}
       ></input>
 
@@ -124,6 +139,7 @@ function ReserveTableDetails({ fromDate, fromTime }) {
         value={day}
         min={fromDate}
         onChange={handleDate}
+        required
         className={styles.dateInput}
       />
 
