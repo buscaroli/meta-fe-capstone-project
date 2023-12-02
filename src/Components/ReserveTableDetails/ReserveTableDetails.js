@@ -67,8 +67,6 @@ function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
   }
 
   const onSubmit = (e) => {
-    e.preventDefault()
-
     const userData = {
       firstName,
       lastName,
@@ -110,6 +108,7 @@ function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
       <input
         type="text"
         id="firstNameInput"
+        name="firstNameInput"
         value={firstName}
         onChange={handleFirstName}
         required
@@ -123,6 +122,7 @@ function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
       <input
         type="text"
         id="lastNameInput"
+        name="lastNameInput"
         value={lastName}
         onChange={handleLastName}
         required
@@ -136,6 +136,7 @@ function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
       <input
         type="email"
         id="emailInput"
+        name="email"
         value={email}
         onChange={handleEmail}
         required
@@ -148,6 +149,7 @@ function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
       <input
         type="tel"
         id="phoneInput"
+        name="phoneInput"
         value={phone}
         pattern="\d+"
         onChange={handlePhone}
@@ -162,6 +164,7 @@ function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
       <input
         type="date"
         id="dateInput"
+        name="dateInput"
         value={day}
         min={fromDate}
         onChange={handleDate}
@@ -175,6 +178,7 @@ function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
       <input
         type="time"
         id="timeInput"
+        name="timeInput"
         value={time}
         min={fromTime}
         required
@@ -237,6 +241,7 @@ function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
       </label>
       <textarea
         id="preferencesInput"
+        name="preferencesInput"
         value={preferences}
         onChange={handlePreferences}
         className={styles.preferencesInput}
