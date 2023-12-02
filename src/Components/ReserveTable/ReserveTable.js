@@ -73,7 +73,7 @@ const reducer = (state, action) => {
 
 function ReserveTable() {
   const [today, setToday] = useState('')
-  const [timeNow, setTimeNow] = useState('')
+
   const [reservationData, setReservationData] = useState({})
   const [bookings, dispatch] = useReducer(reducer, availableSlots)
 
@@ -83,9 +83,6 @@ function ReserveTable() {
       `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
     )
     setToday(nowDate)
-
-    const nowTime = String(`${date.getHours()}:${date.getMinutes()}}`)
-    setTimeNow(nowTime)
 
     console.log('ReerveTable - bookings: ', bookings)
   }, [])
@@ -108,7 +105,6 @@ function ReserveTable() {
       <form className={styles.form} id="reserveTableForm">
         <ReserveTableDetails
           fromDate={today}
-          fromTime={timeNow}
           onReservationSubmit={onReservationSubmit}
           bookings={bookings}
           dispatch={dispatch}

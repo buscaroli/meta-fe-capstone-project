@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import styles from './ReserveTableDetails.module.css'
 
-function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
+function ReserveTableDetails({ fromDate, onReservationSubmit }) {
   // State
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
