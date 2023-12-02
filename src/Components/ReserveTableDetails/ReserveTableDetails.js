@@ -175,17 +175,19 @@ function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
       <label className={styles.timeLabel} htmlFor="timeInput">
         Time
       </label>
-      <input
-        type="time"
-        id="timeInput"
+      <select
         name="timeInput"
+        id="timeInput"
         value={time}
-        min={fromTime}
-        required
-        pattern="[0-9]{2}:[0-9]{2}"
         onChange={handleTime}
         className={styles.timeInput}
-      />
+      >
+        <option value="17:00">17:00</option>
+        <option value="18:00">18:00</option>
+        <option value="19:00">19:00</option>
+        <option value="20:00">20:00</option>
+        <option value="21:00">21:00</option>
+      </select>
 
       <label className={styles.outdoorLabel} htmlFor="outdoorInput">
         Position
