@@ -66,7 +66,9 @@ function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
     setPreferences(e.target.value)
   }
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault()
+
     const userData = {
       firstName,
       lastName,
@@ -79,7 +81,24 @@ function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
       diners,
       preferences,
     }
-    onReservationSubmit(userData)
+    if (
+      !(firstName.length < 3 || firstName.length > 16) &&
+      !(lastName.length < 3 || lastName.length > 16) &&
+      email !== '' &&
+      day !== '' &&
+      time !== ''
+    ) {
+      onReservationSubmit(userData)
+      setFirstName('')
+      setLastName('')
+      setEmail('')
+      setDay('')
+      setTime('')
+      setOutdoor('Indoor')
+      setOccasion('No')
+      setDiners('1')
+      setPreferences('')
+    }
   }
 
   return (
@@ -130,6 +149,7 @@ function ReserveTableDetails({ fromDate, fromTime, onReservationSubmit }) {
         type="tel"
         id="phoneInput"
         value={phone}
+        pattern="\d+"
         onChange={handlePhone}
         className={styles.phoneInput}
       ></input>

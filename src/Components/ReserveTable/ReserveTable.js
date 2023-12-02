@@ -17,8 +17,6 @@ function ReserveTable() {
 
     const nowTime = String(`${date.getHours()}:${date.getMinutes()}}`)
     setTimeNow(nowTime)
-
-    console.log('reservation data: ', reservationData)
   }, [])
 
   const onReservationSubmit = (data) => {
