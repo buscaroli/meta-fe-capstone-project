@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './Reserve.module.css'
 import ReserveTableDetails from '../ReserveTableDetails/ReserveTableDetails'
 
@@ -19,9 +20,16 @@ function ReserveTable() {
     setTimeNow(nowTime)
   }, [])
 
+  const navigate = useNavigate()
+
+  const navigateHome = () => {
+    navigate('/')
+  }
+
   const onReservationSubmit = (data) => {
     console.log('Submitting data:\n', data)
     setReservationData(data)
+    navigateHome()
   }
 
   return (

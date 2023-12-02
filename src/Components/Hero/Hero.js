@@ -1,5 +1,4 @@
 import React from 'react'
-import StoreDetails from '../StoreDetails/StoreDetails'
 import styles from './Hero.module.css'
 import pic from '../../assets/restaurantfood.jpg'
 import ReserveButton from '../ReserveButton/ReserveButton'
