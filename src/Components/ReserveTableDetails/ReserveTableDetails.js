@@ -2,7 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import styles from './ReserveTableDetails.module.css'
 
-function ReserveTableDetails({ fromDate, onReservationSubmit }) {
+function ReserveTableDetails({
+  fromDate,
+  onReservationSubmit,
+  bookings,
+  dispatch,
+}) {
   // State
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -99,6 +104,17 @@ function ReserveTableDetails({ fromDate, onReservationSubmit }) {
     }
   }
 
+  // extras
+
+  const slotOptions = () => {
+    for (let item in bookings) {
+      if (bookings[item] !== 0) {
+        console.log(`<option value="${item}">${item}</option>`)
+      }
+    }
+  }
+  slotOptions()
+
   return (
     <article className={styles.container}>
       {/* User Details */}
@@ -182,11 +198,7 @@ function ReserveTableDetails({ fromDate, onReservationSubmit }) {
         onChange={handleTime}
         className={styles.timeInput}
       >
-        <option value="17:00">17:00</option>
-        <option value="18:00">18:00</option>
-        <option value="19:00">19:00</option>
-        <option value="20:00">20:00</option>
-        <option value="21:00">21:00</option>
+        {slotOptions}
       </select>
 
       <label className={styles.outdoorLabel} htmlFor="outdoorInput">

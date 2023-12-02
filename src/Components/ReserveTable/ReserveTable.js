@@ -6,12 +6,12 @@ import ReserveTableDetails from '../ReserveTableDetails/ReserveTableDetails'
 
 const availableSlots = {
   am12: 10,
-  am13: 10,
-  am14: 10,
-  pm17: 10,
-  pm18: 10,
-  pm19: 10,
-  pm20: 10,
+  am13: 6,
+  am14: 4,
+  pm17: 7,
+  pm18: 3,
+  pm19: 2,
+  pm20: 1,
 }
 
 const reducer = (state, action) => {
