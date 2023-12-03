@@ -106,166 +106,168 @@ function ReserveTableDetails({ fromDate, onReservationSubmit, bookings }) {
   }
 
   return (
-    <article className={styles.container}>
-      {/* User Details */}
-      <label htmlFor="firstNameInput" className={styles.firstNameLabel}>
-        FirstName
-      </label>
-      <input
-        type="text"
-        id="firstNameInput"
-        name="firstNameInput"
-        value={firstName}
-        onChange={handleFirstName}
-        required
-        pattern="\w{3,16}"
-        className={styles.firstNameInput}
-      ></input>
+    <form className={styles.form} id="reserveTableForm">
+      <article className={styles.container}>
+        {/* User Details */}
+        <label htmlFor="firstNameInput" className={styles.firstNameLabel}>
+          FirstName
+        </label>
+        <input
+          type="text"
+          id="firstNameInput"
+          name="firstNameInput"
+          value={firstName}
+          onChange={handleFirstName}
+          required
+          pattern="\w{3,16}"
+          className={styles.firstNameInput}
+        ></input>
 
-      <label htmlFor="lastNameInput" className={styles.lastNameLabel}>
-        LastName
-      </label>
-      <input
-        type="text"
-        id="lastNameInput"
-        name="lastNameInput"
-        value={lastName}
-        onChange={handleLastName}
-        required
-        pattern="\w{3,16}"
-        className={styles.lastNameInput}
-      ></input>
+        <label htmlFor="lastNameInput" className={styles.lastNameLabel}>
+          LastName
+        </label>
+        <input
+          type="text"
+          id="lastNameInput"
+          name="lastNameInput"
+          value={lastName}
+          onChange={handleLastName}
+          required
+          pattern="\w{3,16}"
+          className={styles.lastNameInput}
+        ></input>
 
-      <label htmlFor="emailInput" className={styles.emailLabel}>
-        eMail
-      </label>
-      <input
-        type="email"
-        id="emailInput"
-        name="email"
-        value={email}
-        onChange={handleEmail}
-        required
-        className={styles.emailInput}
-      ></input>
+        <label htmlFor="emailInput" className={styles.emailLabel}>
+          eMail
+        </label>
+        <input
+          type="email"
+          id="emailInput"
+          name="email"
+          value={email}
+          onChange={handleEmail}
+          required
+          className={styles.emailInput}
+        ></input>
 
-      <label htmlFor="phoneInput" className={styles.phoneLabel}>
-        Mobile
-      </label>
-      <input
-        type="tel"
-        id="phoneInput"
-        name="phoneInput"
-        value={phone}
-        pattern="\d+"
-        onChange={handlePhone}
-        className={styles.phoneInput}
-      ></input>
+        <label htmlFor="phoneInput" className={styles.phoneLabel}>
+          Mobile
+        </label>
+        <input
+          type="tel"
+          id="phoneInput"
+          name="phoneInput"
+          value={phone}
+          pattern="\d+"
+          onChange={handlePhone}
+          className={styles.phoneInput}
+        ></input>
 
-      {/* User Preferences */}
+        {/* User Preferences */}
 
-      <label className={styles.dateLabel} htmlFor="dateInput">
-        Date
-      </label>
-      <input
-        type="date"
-        id="dateInput"
-        name="dateInput"
-        value={day}
-        min={fromDate}
-        onChange={handleDate}
-        required
-        className={styles.dateInput}
-      />
+        <label className={styles.dateLabel} htmlFor="dateInput">
+          Date
+        </label>
+        <input
+          type="date"
+          id="dateInput"
+          name="dateInput"
+          value={day}
+          min={fromDate}
+          onChange={handleDate}
+          required
+          className={styles.dateInput}
+        />
 
-      <label className={styles.timeLabel} htmlFor="timeInput">
-        Time
-      </label>
-      <select
-        name="timeInput"
-        id="timeInput"
-        value={time}
-        required
-        onChange={handleTime}
-        className={styles.timeInput}
-      >
-        {bookings.time12 && <option value="time12">12:00</option>}
-        {bookings.time13 && <option value="time13">13:00</option>}
-        {bookings.time14 && <option value="time14">14:00</option>}
-        {bookings.time17 && <option value="time17">17:00</option>}
-        {bookings.time18 && <option value="time18">18:00</option>}
-        {bookings.time19 && <option value="time19">19:00</option>}
-        {bookings.time20 && <option value="time20">20:00</option>}
-      </select>
+        <label className={styles.timeLabel} htmlFor="timeInput">
+          Time
+        </label>
+        <select
+          name="timeInput"
+          id="timeInput"
+          value={time}
+          required
+          onChange={handleTime}
+          className={styles.timeInput}
+        >
+          {bookings.time12 && <option value="time12">12:00</option>}
+          {bookings.time13 && <option value="time13">13:00</option>}
+          {bookings.time14 && <option value="time14">14:00</option>}
+          {bookings.time17 && <option value="time17">17:00</option>}
+          {bookings.time18 && <option value="time18">18:00</option>}
+          {bookings.time19 && <option value="time19">19:00</option>}
+          {bookings.time20 && <option value="time20">20:00</option>}
+        </select>
 
-      <label className={styles.outdoorLabel} htmlFor="outdoorInput">
-        Position
-      </label>
-      <select
-        name="outdoorInput"
-        id="outdoorInput"
-        value={outdoor}
-        onChange={handleOutdoor}
-        className={styles.outdoorInput}
-      >
-        <option value="Indoor">Indoor</option>
-        <option value="Greenhouse">Greenhouse</option>
-        <option value="Garden">Garden</option>
-      </select>
+        <label className={styles.outdoorLabel} htmlFor="outdoorInput">
+          Position
+        </label>
+        <select
+          name="outdoorInput"
+          id="outdoorInput"
+          value={outdoor}
+          onChange={handleOutdoor}
+          className={styles.outdoorInput}
+        >
+          <option value="Indoor">Indoor</option>
+          <option value="Greenhouse">Greenhouse</option>
+          <option value="Garden">Garden</option>
+        </select>
 
-      <label className={styles.occasionLabel} htmlFor="occasionInput">
-        Occasion
-      </label>
-      <select
-        name="occasionInput"
-        id="occasionInput"
-        value={occasion}
-        onChange={handleOccasion}
-        className={styles.occasionInput}
-      >
-        <option value="No">No Occasion</option>
-        <option value="Birthday">Birthday</option>
-        <option value="Wedding">Wedding</option>
-        <option value="Party">Party</option>
-        <option value="Graduation">Graduation</option>
-      </select>
+        <label className={styles.occasionLabel} htmlFor="occasionInput">
+          Occasion
+        </label>
+        <select
+          name="occasionInput"
+          id="occasionInput"
+          value={occasion}
+          onChange={handleOccasion}
+          className={styles.occasionInput}
+        >
+          <option value="No">No Occasion</option>
+          <option value="Birthday">Birthday</option>
+          <option value="Wedding">Wedding</option>
+          <option value="Party">Party</option>
+          <option value="Graduation">Graduation</option>
+        </select>
 
-      <label className={styles.dinersLabel} htmlFor="dinersInput">
-        Diners
-      </label>
-      <select
-        name="dinersInput"
-        id="dinersInput"
-        value={diners}
-        onChange={handleDiners}
-        className={styles.dinersInput}
-      >
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="4">Up to Four</option>
-        <option value="8">Up to Eight</option>
-        <option value="16">Up to Sixteen</option>
-      </select>
+        <label className={styles.dinersLabel} htmlFor="dinersInput">
+          Diners
+        </label>
+        <select
+          name="dinersInput"
+          id="dinersInput"
+          value={diners}
+          onChange={handleDiners}
+          className={styles.dinersInput}
+        >
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="4">Up to Four</option>
+          <option value="8">Up to Eight</option>
+          <option value="16">Up to Sixteen</option>
+        </select>
 
-      <label className={styles.preferencesLabel} htmlFor="preferencesInput">
-        Preferences
-      </label>
-      <textarea
-        id="preferencesInput"
-        name="preferencesInput"
-        value={preferences}
-        onChange={handlePreferences}
-        className={styles.preferencesInput}
-      />
+        <label className={styles.preferencesLabel} htmlFor="preferencesInput">
+          Preferences
+        </label>
+        <textarea
+          id="preferencesInput"
+          name="preferencesInput"
+          value={preferences}
+          onChange={handlePreferences}
+          className={styles.preferencesInput}
+        />
 
-      <input
-        type="submit"
-        className={styles.reserveButton}
-        form="reserveTableForm"
-        onClick={onSubmit}
-        value="Reserve a Table"
-      ></input>
-    </article>
+        <input
+          type="submit"
+          className={styles.reserveButton}
+          form="reserveTableForm"
+          onClick={onSubmit}
+          value="Reserve a Table"
+        ></input>
+      </article>
+    </form>
   )
 }
 

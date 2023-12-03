@@ -137,14 +137,13 @@ function ReserveTable() {
   return (
     <section className={styles.container}>
       <h5 className={styles.title}>Reserve a Table</h5>
-      <form className={styles.form} id="reserveTableForm">
-        <ReserveTableDetails
-          fromDate={today}
-          onReservationSubmit={onReservationSubmit}
-          bookings={bookings}
-          dispatch={dispatch}
-        />
-      </form>
+
+      <ReserveTableDetails
+        fromDate={today}
+        onReservationSubmit={onReservationSubmit}
+        bookings={bookings}
+        dispatch={dispatch}
+      />
     </section>
   )
 }
