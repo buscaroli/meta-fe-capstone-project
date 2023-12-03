@@ -2,12 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import styles from './ReserveTableDetails.module.css'
 
-function ReserveTableDetails({
-  fromDate,
-  onReservationSubmit,
-  bookings,
-  dispatch,
-}) {
+function ReserveTableDetails({ fromDate, onReservationSubmit, bookings }) {
   // State
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -72,6 +67,9 @@ function ReserveTableDetails({
   }
 
   const onSubmit = (e) => {
+    e.preventDefault()
+    e.target.checkValidity()
+
     const userData = {
       firstName,
       lastName,
@@ -84,9 +82,10 @@ function ReserveTableDetails({
       diners,
       preferences,
     }
+
     if (
-      !(firstName.length < 3 || firstName.length > 16) &&
-      !(lastName.length < 3 || lastName.length > 16) &&
+      !(firstName.length <= 3 || firstName.length >= 16) &&
+      !(lastName.length <= 3 || lastName.length >= 16) &&
       email !== '' &&
       day !== '' &&
       time !== ''
@@ -101,19 +100,10 @@ function ReserveTableDetails({
       setOccasion('No')
       setDiners('1')
       setPreferences('')
+    } else {
+      e.target.reportValidity()
     }
   }
-
-  // extras
-
-  const slotOptions = () => {
-    for (let item in bookings) {
-      if (bookings[item] !== 0) {
-        console.log(`<option value="${item}">${item}</option>`)
-      }
-    }
-  }
-  slotOptions()
 
   return (
     <article className={styles.container}>
@@ -195,10 +185,17 @@ function ReserveTableDetails({
         name="timeInput"
         id="timeInput"
         value={time}
+        required
         onChange={handleTime}
         className={styles.timeInput}
       >
-        {slotOptions}
+        {bookings.time12 && <option value="time12">12:00</option>}
+        {bookings.time13 && <option value="time13">13:00</option>}
+        {bookings.time14 && <option value="time14">14:00</option>}
+        {bookings.time17 && <option value="time17">17:00</option>}
+        {bookings.time18 && <option value="time18">18:00</option>}
+        {bookings.time19 && <option value="time19">19:00</option>}
+        {bookings.time20 && <option value="time20">20:00</option>}
       </select>
 
       <label className={styles.outdoorLabel} htmlFor="outdoorInput">

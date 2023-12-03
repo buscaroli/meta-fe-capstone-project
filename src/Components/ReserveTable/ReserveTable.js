@@ -5,65 +5,65 @@ import styles from './Reserve.module.css'
 import ReserveTableDetails from '../ReserveTableDetails/ReserveTableDetails'
 
 const availableSlots = {
-  am12: 10,
-  am13: 6,
-  am14: 4,
-  pm17: 7,
-  pm18: 3,
-  pm19: 2,
-  pm20: 1,
+  time12: 10,
+  time13: 6,
+  time14: 4,
+  time17: 7,
+  time18: 3,
+  time19: 2,
+  time20: 1,
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'book-am12':
-      if (state.am12 === 0) {
+    case 'book-12':
+      if (state.time12 === 0) {
         console.log('Fully Booked')
       } else {
-        return { ...state, am12: state.am12 - 1 }
+        return { ...state, time12: state.time12 - 1 }
       }
       break
-    case 'book-am13':
-      if (state.am13 === 0) {
+    case 'book-13':
+      if (state.time13 === 0) {
         console.log('Fully Booked')
       } else {
-        return { ...state, am13: state.am13 - 1 }
+        return { ...state, time13: state.time13 - 1 }
       }
       break
 
-    case 'book-am14':
-      if (state.am14 === 0) {
+    case 'book-14':
+      if (state.time14 === 0) {
         console.log('Fully Booked')
       } else {
-        return { ...state, am14: state.am14 - 1 }
+        return { ...state, time14: state.time14 - 1 }
       }
       break
-    case 'book-pm17':
-      if (state.pm17 === 0) {
+    case 'book-17':
+      if (state.time17 === 0) {
         console.log('Fully Booked')
       } else {
-        return { ...state, pm17: state.pm17 - 1 }
+        return { ...state, time17: state.time17 - 1 }
       }
       break
-    case 'book-pm18':
-      if (state.pm18 === 0) {
+    case 'book-18':
+      if (state.time18 === 0) {
         console.log('Fully Booked')
       } else {
-        return { ...state, pm18: state.pm18 - 1 }
+        return { ...state, time18: state.time18 - 1 }
       }
       break
-    case 'book-pm19':
-      if (state.pm19 === 0) {
+    case 'book-19':
+      if (state.time19 === 0) {
         console.log('Fully Booked')
       } else {
-        return { ...state, pm19: state.pm19 - 1 }
+        return { ...state, time19: state.time19 - 1 }
       }
       break
-    case 'book-pm20':
-      if (state.pm20 === 0) {
+    case 'book-20':
+      if (state.time20 === 0) {
         console.log('Fully Booked')
       } else {
-        return { ...state, pm20: state.pm20 - 1 }
+        return { ...state, time20: state.time20 - 1 }
       }
       break
     default:
@@ -83,20 +83,55 @@ function ReserveTable() {
       `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
     )
     setToday(nowDate)
-
-    console.log('ReerveTable - bookings: ', bookings)
   }, [])
 
   const navigate = useNavigate()
 
   const navigateHome = () => {
     navigate('/')
+
+    console.log('==== bookings: ', bookings)
   }
 
   const onReservationSubmit = (data) => {
-    console.log('Submitting data:\n', data)
     setReservationData(data)
-    navigateHome()
+    console.log('Submitting data:\n', data)
+
+    switch (data.time) {
+      case 'time12':
+        dispatch({ type: 'book-12' })
+        console.log('called 12')
+        break
+      case 'time13':
+        dispatch({ type: 'book-13' })
+        console.log('called 13')
+        break
+      case 'time14':
+        dispatch({ type: 'book-14' })
+        console.log('called 14')
+        break
+      case 'time17':
+        dispatch({ type: 'book-17' })
+        console.log('called 17')
+        break
+      case 'time18':
+        dispatch({ type: 'book-18' })
+        console.log('called 18')
+        break
+      case 'time19':
+        dispatch({ type: 'book-19' })
+        console.log('called 19')
+        break
+      case 'time20':
+        dispatch({ type: 'book-20' })
+        console.log('called 20')
+        break
+      default:
+        break
+    }
+
+    console.log('**** ReserveTable - bookings: ', bookings)
+    // navigateHome()
   }
 
   return (
