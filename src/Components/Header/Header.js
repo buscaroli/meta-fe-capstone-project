@@ -10,7 +10,7 @@ function Header() {
   }
 
   return (
-    <header className={styles.header}>
+    <header id="header" className={styles.header}>
       <div className={styles.logo}>
         <img src={logo} alt="logo of the restaurant, showing a lemon" />
       </div>
