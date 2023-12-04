@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState, useEffect, useReducer } from 'react'
-import { useNavigate } from 'react-router-dom'
 import styles from './Reserve.module.css'
 import ReserveTableDetails from '../ReserveTableDetails/ReserveTableDetails'
 
@@ -85,14 +84,6 @@ function ReserveTable() {
     setToday(nowDate)
   }, [])
 
-  const navigate = useNavigate()
-
-  const navigateHome = () => {
-    navigate('/')
-
-    console.log('==== bookings: ', bookings)
-  }
-
   const onReservationSubmit = (data) => {
     setReservationData(data)
     console.log('Submitting data:\n', data)
@@ -131,12 +122,14 @@ function ReserveTable() {
     }
 
     console.log('**** ReserveTable - bookings: ', bookings)
-    // navigateHome()
+    // jump to the 'receipt page'
   }
 
   return (
     <section className={styles.container}>
-      <h5 className={styles.title}>Reserve a Table</h5>
+      <h5 data-testid="reserveTableHeading" className={styles.title}>
+        Reserve a Table
+      </h5>
 
       <ReserveTableDetails
         fromDate={today}
