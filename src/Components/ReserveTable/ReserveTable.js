@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import styles from './Reserve.module.css'
 import ReserveTableDetails from '../ReserveTableDetails/ReserveTableDetails'
 
-const availableSlots = {
+const availableTimes = {
   time12: 10,
   time13: 6,
   time14: 4,
@@ -14,7 +14,7 @@ const availableSlots = {
   time20: 1,
 }
 
-const reducer = (state, action) => {
+const updateTimes = (state, action) => {
   switch (action.type) {
     case 'book-12':
       if (state.time12 === 0) {
@@ -75,7 +75,7 @@ function ReserveTable() {
   const [today, setToday] = useState('')
 
   const [reservationData, setReservationData] = useState({})
-  const [bookings, dispatch] = useReducer(reducer, availableSlots)
+  const [bookings, dispatch] = useReducer(updateTimes, availableTimes)
 
   useEffect(() => {
     const date = new Date()
