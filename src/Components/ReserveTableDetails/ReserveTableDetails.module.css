@@ -2,7 +2,7 @@
   grid-column: 3/11;
 
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: subgrid;
   grid-template-rows: repeat(20, 20px);
 
   font-family: var(--font-sans);
@@ -23,10 +23,10 @@
 }
 
 /* form */
-.form {
+/* .form {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-}
+} */
 
 /* User Details */
 
