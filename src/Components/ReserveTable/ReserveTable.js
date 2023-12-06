@@ -71,17 +71,23 @@ const updateTimes = (state, action) => {
 }
 
 function ReserveTable() {
-  const [today, setToday] = useState('')
-
   const [reservationData, setReservationData] = useState({})
   const [bookings, dispatch] = useReducer(updateTimes, availableTimes)
+  const [today, setToday] = useState('')
 
-  useEffect(() => {
+  async function initializeTimes() {
     const date = new Date()
+
     const nowDate = String(
       `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
     )
-    setToday(nowDate)
+    // the course's API is not working, hardcoding today's date with different slots
+    const availableTimes = availableTimes
+    setToday(availableTimes)
+  }
+
+  useEffect(() => {
+    initializeTimes()
   }, [])
 
   const onReservationSubmit = (data) => {
