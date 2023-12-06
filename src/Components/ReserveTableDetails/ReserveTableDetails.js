@@ -160,7 +160,7 @@ function ReserveTableDetails({
             id="day"
             {...formik.getFieldProps('day')}
             className={styles.dateInput}
-            onClick={dateHandler}
+            onFocus={dateHandler}
           />
           {formik.touched.day && formik.errors.day ? (
             <div
@@ -265,9 +265,14 @@ function ReserveTableDetails({
           >
             <option value="1">One</option>
             <option value="2">Two</option>
-            <option value="4">Up to Four</option>
-            <option value="8">Up to Eight</option>
-            <option value="16">Up to Sixteen</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+            <option value="7">Seven</option>
+            <option value="8">Eight</option>
+            <option value="9">Nine</option>
+            <option value="10">Ten</option>
           </select>
           {formik.touched.diners && formik.errors.diners ? (
             <div

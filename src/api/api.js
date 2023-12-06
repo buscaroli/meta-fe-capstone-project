@@ -35,7 +35,7 @@ const generateDatesFromToday = (numDays) => {
       : (dates[today] = slotsArray[1])
     alternatingShift = !alternatingShift
   }
-  // console.log('dates ---> ', dates)
+  console.log('API - dates ---> ', dates)
   return dates
 }
 
@@ -54,7 +54,7 @@ const fetchAPI = (date) => {
       if (freeSlots[date]) {
         resolve(freeSlots[date])
       } else if (!freeSlots[date]) {
-        resolve(['Unavailable', 0])
+        resolve(['', 0])
       } else {
         reject(new Error('Could not fetch Time Slots.'))
       }
@@ -64,13 +64,31 @@ const fetchAPI = (date) => {
 
 // this is a temporary function as the official Meta API is unavailable
 // in future might add the time as well and decrease the table numbers
-const submitAPI = ({ date }) => {
-  let canReserve = freeSlots[date] ? true : false
+const submitAPI = ({ day, time, diners }) => {
+  let canReserve = false
+  let remainingSeats = 0
+  console.log('API - day -> ', day)
+  console.log('API - freeSlots[day] -> ', freeSlots[day])
+  freeSlots[day].forEach((x, idx) => {
+    if (x[0] === time) {
+      remainingSeats = x[1] - diners
+      canReserve = remainingSeats >= 0 ? true : false
+      console.log(
+        `API - freeSlots after subtraction of ${diners} diners:`,
+        freeSlots
+      )
+    }
+    console.log(
+      `${idx}. value: ${x[0]}, time: ${time}, areEqual: ${x[0] === time}`
+    )
+  })
 
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (canReserve) {
         resolve(true)
+      } else if (!canReserve) {
+        resolve(false)
       } else {
         reject(new Error('Error submitting the form'))
       }
