@@ -1,98 +1,72 @@
-// generate an object containing the next 'numDays' dates
-// with corresponding booking availability
-const generateDatesFromToday = (numDays) => {
-  const slotsArray = [
-    [
-      ['12:00', 3],
-      ['13:00', 5],
-      ['14:00', 3],
-    ],
-    [
-      ['17:00', 3],
-      ['18:00', 5],
-      ['19:00', 3],
-      ['20:00', 2],
-    ],
-  ]
-  const date = new Date()
-  let dates = {} // stores dates with daily shifts
-
-  // takes a Date() and returns a String as 'YYYY-MM-DD'
-  const calculateDate = (day) =>
-    String(`${day.getFullYear()}-${day.getMonth() + 1}-${day.getDate()}`)
-
-  let alternatingShift = true // to alternate shifts pattern
-
-  for (let i = 0; i < numDays; i++) {
-    date.setDate(date.getDate() + 1) // add one day
-    let today = calculateDate(date)
-
-    // console.log('alternatingShift ', alternatingShift)
-    // console.log('today ', today)
-
-    alternatingShift
-      ? (dates[today] = slotsArray[0])
-      : (dates[today] = slotsArray[1])
-    alternatingShift = !alternatingShift
-  }
-  console.log('API - dates ---> ', dates)
-  return dates
+const availableTimesByDate = {
+  '2023-08-29': ['10:00', '11:00', '12:00'],
+  '2023-09-01': ['10:00', '11:00', '12:00'],
+  '2023-09-02': ['14:00', '15:00', '16:00'],
+  '2023-09-03': ['10:00', '11:00', '12:00'],
+  '2023-09-04': ['14:00', '15:00', '16:00'],
+  '2023-09-05': ['10:00', '11:00', '12:00'],
+  '2023-09-06': ['14:00', '15:00', '16:00'],
+  '2023-09-07': ['10:00', '11:00', '12:00'],
+  '2023-09-08': ['14:00', '15:00', '16:00'],
+  '2023-09-09': ['10:00', '11:00', '12:00'],
+  '2023-09-10': ['14:00', '15:00', '16:00'],
+  '2023-09-11': ['10:00', '11:00', '12:00'],
+  '2023-09-12': ['14:00', '15:00', '16:00'],
+  '2023-09-13': ['10:00', '11:00', '12:00'],
+  '2023-09-14': ['14:00', '15:00', '16:00'],
+  '2023-09-15': ['10:00', '11:00', '12:00'],
+  '2023-09-16': ['14:00', '15:00', '16:00'],
+  '2023-09-17': ['10:00', '11:00', '12:00'],
+  '2023-09-18': ['14:00', '15:00', '16:00'],
+  '2023-09-19': ['10:00', '11:00', '12:00'],
+  '2023-09-20': ['14:00', '15:00', '16:00'],
 }
 
-let freeSlots
-// simulates an API call
-// if the date passed as 'YYYY-MM-DD' is in the freeSlots dictionary
-// the promise will resolve returning the array with the free slots for
-// that day, otherwise it will return an empty array
 const fetchAPI = (date) => {
-  freeSlots = generateDatesFromToday(14)
-  console.log('api.js - date: ', date)
-  console.log('api.js - freeSlots: ', freeSlots)
-  console.log('api.js - freeSlots[date]: ', freeSlots[date])
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (freeSlots[date]) {
-        resolve(freeSlots[date])
-      } else if (!freeSlots[date]) {
-        resolve(['', 0])
+      if (availableTimesByDate[date]) {
+        resolve(availableTimesByDate[date])
+      } else if (!availableTimesByDate[date]) {
+        resolve([])
       } else {
-        reject(new Error('Could not fetch Time Slots.'))
+        reject(new Error('No available times for the selected date.'))
       }
-    }, 1000)
+    }, 500)
   })
 }
 
-// this is a temporary function as the official Meta API is unavailable
-// in future might add the time as well and decrease the table numbers
-const submitAPI = ({ day, time, diners }) => {
-  let canReserve = false
-  let remainingSeats = 0
-  console.log('API - day -> ', day)
-  console.log('API - freeSlots[day] -> ', freeSlots[day])
-  freeSlots[day].forEach((x, idx) => {
-    if (x[0] === time) {
-      remainingSeats = x[1] - diners
-      canReserve = remainingSeats >= 0 ? true : false
-      console.log(
-        `API - freeSlots after subtraction of ${diners} diners:`,
-        freeSlots
-      )
-    }
-    console.log(
-      `${idx}. value: ${x[0]}, time: ${time}, areEqual: ${x[0] === time}`
-    )
+const submitAPI = ({ day, time }) => {
+  console.log(
+    'API - submitAPI - avaiableTimesByDate - BEFORE: ',
+    availableTimesByDate
+  )
+  console.log('API - submitAPI - day: ', day)
+  console.log('API - submitAPI - time: ', time)
+  if (availableTimesByDate[day].length === 1) {
+    availableTimesByDate[day] = []
+  }
+  availableTimesByDate[day] = availableTimesByDate[day].filter((slot) => {
+    console.log('API - submitAPI loop - slot: ', slot)
+    console.log('API - submitAPI loop - slot === time: ', slot === time)
+    return slot !== time
   })
+
+  console.log(
+    'API - submitAPI - avaiableTimesByDate - AFTER: ',
+    availableTimesByDate
+  )
 
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (canReserve) {
-        resolve(true)
-      } else if (!canReserve) {
+      if (day) {
+        resolve(true) // Simulate successful submission
+      } else if (!day) {
         resolve(false)
       } else {
-        reject(new Error('Error submitting the form'))
+        reject(new Error('Form submission failed.'))
       }
-    }, 1000)
+    }, 500) // Simulate API delay
   })
 }
 

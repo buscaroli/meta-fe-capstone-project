@@ -9,17 +9,32 @@ function ReserveTableDetails({
   todaysFreeSlots,
   getEnteredDate,
 }) {
-  const freeSlots = todaysFreeSlots
-    .filter((slot) => slot[1] !== 0)
-    .map((slot, idx) => (
-      <option key={idx} value={slot[0]}>
-        {slot[0]}
-      </option>
-    ))
+  // const freeSlots = todaysFreeSlots
+  //   .filter((slot) => slot[1] !== 0)
+  //   .map((slot, idx) => (
+  //     <option key={idx} value={slot[0]}>
+  //       {slot[0]}
+  //     </option>
+  //   ))
+
+  const freeSlots = todaysFreeSlots.map((slot) => (
+    <option key={slot} value={slot}>
+      {slot}
+    </option>
+  ))
 
   const dateHandler = (e) => {
     // console.log('********* ', e.target.value)
     getEnteredDate(e.target.value)
+  }
+
+  const handleTime = (e) => {
+    console.log('******** ', e.target.value)
+    console.log('######### , ', freeSlots)
+    if (freeSlots.length === 0) {
+      console.log('EMPTY!!!!!!!!!')
+      e.target.value = ''
+    }
   }
 
   return (
@@ -30,7 +45,7 @@ function ReserveTableDetails({
         email: '',
         phone: '',
         day: fromDate,
-        time: '12:00',
+        time: '',
         outdoor: 'Indoor',
         occasion: 'No',
         diners: '1',
@@ -160,7 +175,7 @@ function ReserveTableDetails({
             id="day"
             {...formik.getFieldProps('day')}
             className={styles.dateInput}
-            onFocus={dateHandler}
+            onFocusCapture={dateHandler}
           />
           {formik.touched.day && formik.errors.day ? (
             <div
@@ -182,12 +197,8 @@ function ReserveTableDetails({
             id="time"
             {...formik.getFieldProps('time')}
             className={styles.timeInput}
+            onBlur={handleTime}
           >
-            {console.log('ReserveTableDetails - freeSlots: ', freeSlots)}
-            {console.log(
-              'ReserveTableDetails - todaysFreeSlots: ',
-              todaysFreeSlots
-            )}
             {freeSlots}
           </select>
           {formik.touched.time && formik.errors.time ? (
