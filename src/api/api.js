@@ -27,8 +27,8 @@ const generateDatesFromToday = (numDays) => {
     date.setDate(date.getDate() + 1) // add one day
     let today = calculateDate(date)
 
-    console.log('alternatingShift ', alternatingShift)
-    console.log('today ', today)
+    // console.log('alternatingShift ', alternatingShift)
+    // console.log('today ', today)
 
     alternatingShift
       ? (dates[today] = slotsArray[0])

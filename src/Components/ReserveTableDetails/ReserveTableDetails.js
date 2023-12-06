@@ -6,9 +6,20 @@ import styles from './ReserveTableDetails.module.css'
 function ReserveTableDetails({
   fromDate,
   onReservationSubmit,
-  bookings,
+  todaysFreeSlots,
   getEnteredDate,
 }) {
+  // const freeSlots = todaysFreeSlots
+  //   .filter((slot) => slot[1] !== 0)
+  //   .map((slot, idx) => {
+  //     ;<option value={slot[0]}>{slot[0]}</option>
+  //   })
+
+  const dateHandler = (e) => {
+    // console.log('********* ', e.target.value)
+    getEnteredDate(e.target.value)
+  }
+
   return (
     <Formik
       initialValues={{
@@ -147,7 +158,7 @@ function ReserveTableDetails({
             id="day"
             {...formik.getFieldProps('day')}
             className={styles.dateInput}
-            onClick={getEnteredDate(formik.values.day)}
+            onClick={dateHandler}
           />
           {formik.touched.day && formik.errors.day ? (
             <div
@@ -170,13 +181,7 @@ function ReserveTableDetails({
             {...formik.getFieldProps('time')}
             className={styles.timeInput}
           >
-            {bookings.time12 && <option value="time12">12:00</option>}
-            {bookings.time13 && <option value="time13">13:00</option>}
-            {bookings.time14 && <option value="time14">14:00</option>}
-            {bookings.time17 && <option value="time17">17:00</option>}
-            {bookings.time18 && <option value="time18">18:00</option>}
-            {bookings.time19 && <option value="time19">19:00</option>}
-            {bookings.time20 && <option value="time20">20:00</option>}
+            {console.log('todaysFreeSlots: ', todaysFreeSlots)}
           </select>
           {formik.touched.time && formik.errors.time ? (
             <div

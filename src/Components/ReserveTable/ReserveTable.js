@@ -74,34 +74,34 @@ const updateTimes = (state, action) => {
 function ReserveTable() {
   const [reservationData, setReservationData] = useState({})
   const [bookings, dispatch] = useReducer(updateTimes, {})
-  const [today, setToday] = useState('2023-07-12')
   const [selectedDay, setSelectedDay] = useState('')
+  const [todaysFreeSlots, setTodaysFreeSlots] = useState([])
 
   function initializeTimes() {
     const date = new Date()
 
     const nowDate = String(
-      `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+      `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() + 1}`
     )
-    // the course's API is not working, hardcoding today's date with different slots
-    // const availableTimes = availableTimes
-    // setToday(availableTimes)
-    setToday(nowDate)
+    // initializing default date to tomorrow
+    console.log('===== nowDate: ', nowDate)
+    setSelectedDay(nowDate)
   }
 
   // update today as per selected date from the date-picker
   const getEnteredDate = (day) => {
     console.log('selected date: ', day)
-    setToday(day)
+    setSelectedDay(day)
   }
-
-  // useEffect(() => {
-
-  // }, [])
-
   useEffect(() => {
     initializeTimes()
+  }, [])
+
+  useEffect(() => {
     const availability = fetchAPI(selectedDay)
+    // console.log('selectedDay: ', selectedDay)
+    setTodaysFreeSlots(availability)
+    // console.log('availability: ', availability)
   }, [selectedDay])
 
   const onReservationSubmit = (data) => {
@@ -152,10 +152,9 @@ function ReserveTable() {
       </h5>
 
       <ReserveTableDetails
-        fromDate={today}
+        fromDate={selectedDay}
         onReservationSubmit={onReservationSubmit}
-        bookings={bookings}
-        dispatch={dispatch}
+        todaysFreeSlots={todaysFreeSlots}
         getEnteredDate={getEnteredDate}
       />
     </section>
