@@ -9,11 +9,13 @@ function ReserveTableDetails({
   todaysFreeSlots,
   getEnteredDate,
 }) {
-  // const freeSlots = todaysFreeSlots
-  //   .filter((slot) => slot[1] !== 0)
-  //   .map((slot, idx) => {
-  //     ;<option value={slot[0]}>{slot[0]}</option>
-  //   })
+  const freeSlots = todaysFreeSlots
+    .filter((slot) => slot[1] !== 0)
+    .map((slot, idx) => (
+      <option key={idx} value={slot[0]}>
+        {slot[0]}
+      </option>
+    ))
 
   const dateHandler = (e) => {
     // console.log('********* ', e.target.value)
@@ -181,7 +183,12 @@ function ReserveTableDetails({
             {...formik.getFieldProps('time')}
             className={styles.timeInput}
           >
-            {console.log('todaysFreeSlots: ', todaysFreeSlots)}
+            {console.log('ReserveTableDetails - freeSlots: ', freeSlots)}
+            {console.log(
+              'ReserveTableDetails - todaysFreeSlots: ',
+              todaysFreeSlots
+            )}
+            {freeSlots}
           </select>
           {formik.touched.time && formik.errors.time ? (
             <div

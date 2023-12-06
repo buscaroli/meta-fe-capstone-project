@@ -90,18 +90,26 @@ function ReserveTable() {
 
   // update today as per selected date from the date-picker
   const getEnteredDate = (day) => {
-    console.log('selected date: ', day)
+    console.log('ReserveTable - selected date: ', day)
     setSelectedDay(day)
   }
+
+  const fetchDesiredSlots = () => {
+    fetchAPI(selectedDay)
+      .then((x) => {
+        setTodaysFreeSlots(x)
+      })
+      .catch((e) => {
+        console.log('ReserveTable = Error fetching Free Slots: ', e)
+      })
+  }
+
   useEffect(() => {
     initializeTimes()
   }, [])
 
   useEffect(() => {
-    const availability = fetchAPI(selectedDay)
-    // console.log('selectedDay: ', selectedDay)
-    setTodaysFreeSlots(availability)
-    // console.log('availability: ', availability)
+    fetchDesiredSlots()
   }, [selectedDay])
 
   const onReservationSubmit = (data) => {
