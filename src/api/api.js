@@ -46,13 +46,17 @@ let freeSlots
 // that day, otherwise it will return an empty array
 const fetchAPI = (date) => {
   freeSlots = generateDatesFromToday(14)
-
+  console.log('api.js - date: ', date)
+  console.log('api.js - freeSlots: ', freeSlots)
+  console.log('api.js - freeSlots[date]: ', freeSlots[date])
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (freeSlots[date]) {
         resolve(freeSlots[date])
+      } else if (!freeSlots[date]) {
+        resolve(['Unavailable', 0])
       } else {
-        reject([])
+        reject(new Error('Could not fetch Time Slots.'))
       }
     }, 1000)
   })

@@ -1,17 +1,18 @@
 import React from 'react'
 import { useState, useEffect, useReducer } from 'react'
+import { fetchAPI } from '../../api/api'
 import styles from './Reserve.module.css'
 import ReserveTableDetails from '../ReserveTableDetails/ReserveTableDetails'
 
-const availableTimes = {
-  time12: 10,
-  time13: 6,
-  time14: 4,
-  time17: 7,
-  time18: 3,
-  time19: 2,
-  time20: 1,
-}
+// const availableTimes = {
+//   time12: 10,
+//   time13: 6,
+//   time14: 4,
+//   time17: 7,
+//   time18: 3,
+//   time19: 2,
+//   time20: 1,
+// }
 
 const updateTimes = (state, action) => {
   switch (action.type) {
@@ -72,23 +73,36 @@ const updateTimes = (state, action) => {
 
 function ReserveTable() {
   const [reservationData, setReservationData] = useState({})
-  const [bookings, dispatch] = useReducer(updateTimes, availableTimes)
-  const [today, setToday] = useState('')
+  const [bookings, dispatch] = useReducer(updateTimes, {})
+  const [today, setToday] = useState('2023-07-12')
+  const [selectedDay, setSelectedDay] = useState('')
 
-  async function initializeTimes() {
+  function initializeTimes() {
     const date = new Date()
 
     const nowDate = String(
       `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
     )
     // the course's API is not working, hardcoding today's date with different slots
-    const availableTimes = availableTimes
-    setToday(availableTimes)
+    // const availableTimes = availableTimes
+    // setToday(availableTimes)
+    setToday(nowDate)
   }
+
+  // update today as per selected date from the date-picker
+  const getEnteredDate = (day) => {
+    console.log('selected date: ', day)
+    setToday(day)
+  }
+
+  // useEffect(() => {
+
+  // }, [])
 
   useEffect(() => {
     initializeTimes()
-  }, [])
+    const availability = fetchAPI(selectedDay)
+  }, [selectedDay])
 
   const onReservationSubmit = (data) => {
     setReservationData(data)
@@ -142,6 +156,7 @@ function ReserveTable() {
         onReservationSubmit={onReservationSubmit}
         bookings={bookings}
         dispatch={dispatch}
+        getEnteredDate={getEnteredDate}
       />
     </section>
   )

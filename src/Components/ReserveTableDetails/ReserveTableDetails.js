@@ -3,7 +3,12 @@ import { Formik } from 'formik'
 import * as Yup from 'yup'
 import styles from './ReserveTableDetails.module.css'
 
-function ReserveTableDetails({ fromDate, onReservationSubmit, bookings }) {
+function ReserveTableDetails({
+  fromDate,
+  onReservationSubmit,
+  bookings,
+  getEnteredDate,
+}) {
   return (
     <Formik
       initialValues={{
@@ -11,7 +16,7 @@ function ReserveTableDetails({ fromDate, onReservationSubmit, bookings }) {
         lastName: '',
         email: '',
         phone: '',
-        day: '',
+        day: fromDate,
         time: '12:00',
         outdoor: 'Indoor',
         occasion: 'No',
@@ -142,6 +147,7 @@ function ReserveTableDetails({ fromDate, onReservationSubmit, bookings }) {
             id="day"
             {...formik.getFieldProps('day')}
             className={styles.dateInput}
+            onClick={getEnteredDate(formik.values.day)}
           />
           {formik.touched.day && formik.errors.day ? (
             <div
