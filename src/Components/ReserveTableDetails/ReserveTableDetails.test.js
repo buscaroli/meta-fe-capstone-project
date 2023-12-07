@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { MemoryRouter as Router } from 'react-router-dom'
 import ReserveTable from '../ReserveTable/ReserveTable'
 import ReserveTableDetails from './ReserveTableDetails'
