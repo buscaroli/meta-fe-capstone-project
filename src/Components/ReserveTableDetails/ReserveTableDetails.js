@@ -10,14 +10,6 @@ function ReserveTableDetails({
   todaysFreeSlots,
   getEnteredDate,
 }) {
-  // const freeSlots = todaysFreeSlots
-  //   .filter((slot) => slot[1] !== 0)
-  //   .map((slot, idx) => (
-  //     <option key={idx} value={slot[0]}>
-  //       {slot[0]}
-  //     </option>
-  //   ))
-
   const timeRef = useRef('')
   const freeSlots = todaysFreeSlots.map((slot) => (
     <option key={slot} value={slot}>
@@ -26,18 +18,8 @@ function ReserveTableDetails({
   ))
 
   const dateHandler = (e) => {
-    // console.log('********* ', e.target.value)
     getEnteredDate(e.target.value)
   }
-
-  // const handleTime = (e) => {
-  //   console.log('******** ', e.target.value)
-  //   console.log('######### , ', freeSlots)
-  //   if (freeSlots.length === 0) {
-  //     console.log('EMPTY!!!!!!!!!')
-  //     e.target.value = ''
-  //   }
-  // }
 
   return (
     <Formik
