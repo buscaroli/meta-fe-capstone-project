@@ -308,6 +308,7 @@ function ReserveTableDetails({
             type="submit"
             className={styles.reserveButton}
             form="reserveTableForm"
+            disabled={!(formik.isValid && formik.dirty)}
           >
             Reserve a Table
           </button>
