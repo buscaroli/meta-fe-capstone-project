@@ -1,14 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { fetchAPI, submitAPI } from '../../api/api'
 import styles from './Reserve.module.css'
 import ReserveTableDetails from '../ReserveTableDetails/ReserveTableDetails'
 
 function ReserveTable() {
-  const [reservationData, setReservationData] = useState({})
-  // const [bookings, dispatch] = useReducer(updateTimes, {})
   const [selectedDay, setSelectedDay] = useState('2023-09-14')
   const [todaysFreeSlots, setTodaysFreeSlots] = useState([])
+
+  const navigate = useNavigate('')
 
   function initializeTimes() {
     setSelectedDay('2023-09-29')
@@ -39,12 +40,12 @@ function ReserveTable() {
   })
 
   const onReservationSubmit = async (data) => {
-    setReservationData(data)
-    console.log('ReserveTable - reservationData: ', reservationData)
-
-    const submitted = await submitAPI(data)
-    console.log('ReserveTable - submitted: ', submitted)
+    await submitAPI(data)
     fetchDesiredSlots()
+
+    navigate('/confirm', {
+      state: data,
+    })
   }
 
   return (
