@@ -1,9 +1,44 @@
 import React from 'react'
+import { useRef } from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import styles from './ReserveTableDetails.module.css'
 
-function ReserveTableDetails({ fromDate, onReservationSubmit, bookings }) {
+function ReserveTableDetails({
+  fromDate,
+  onReservationSubmit,
+  todaysFreeSlots,
+  getEnteredDate,
+}) {
+  // const freeSlots = todaysFreeSlots
+  //   .filter((slot) => slot[1] !== 0)
+  //   .map((slot, idx) => (
+  //     <option key={idx} value={slot[0]}>
+  //       {slot[0]}
+  //     </option>
+  //   ))
+
+  const timeRef = useRef('')
+  const freeSlots = todaysFreeSlots.map((slot) => (
+    <option key={slot} value={slot}>
+      {slot}
+    </option>
+  ))
+
+  const dateHandler = (e) => {
+    // console.log('********* ', e.target.value)
+    getEnteredDate(e.target.value)
+  }
+
+  // const handleTime = (e) => {
+  //   console.log('******** ', e.target.value)
+  //   console.log('######### , ', freeSlots)
+  //   if (freeSlots.length === 0) {
+  //     console.log('EMPTY!!!!!!!!!')
+  //     e.target.value = ''
+  //   }
+  // }
+
   return (
     <Formik
       initialValues={{
@@ -11,8 +46,8 @@ function ReserveTableDetails({ fromDate, onReservationSubmit, bookings }) {
         lastName: '',
         email: '',
         phone: '',
-        day: '',
-        time: '12:00',
+        day: fromDate,
+        time: '',
         outdoor: 'Indoor',
         occasion: 'No',
         diners: '1',
@@ -31,8 +66,8 @@ function ReserveTableDetails({ fromDate, onReservationSubmit, bookings }) {
         preferences: Yup.string(),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        console.log('formik values: ', values)
-        onReservationSubmit(values)
+        const updatedValues = { ...values, time: timeRef.current.value }
+        onReservationSubmit(updatedValues)
         setSubmitting(false)
       }}
     >
@@ -142,6 +177,7 @@ function ReserveTableDetails({ fromDate, onReservationSubmit, bookings }) {
             id="day"
             {...formik.getFieldProps('day')}
             className={styles.dateInput}
+            onFocusCapture={dateHandler}
           />
           {formik.touched.day && formik.errors.day ? (
             <div
@@ -163,14 +199,9 @@ function ReserveTableDetails({ fromDate, onReservationSubmit, bookings }) {
             id="time"
             {...formik.getFieldProps('time')}
             className={styles.timeInput}
+            ref={timeRef}
           >
-            {bookings.time12 && <option value="time12">12:00</option>}
-            {bookings.time13 && <option value="time13">13:00</option>}
-            {bookings.time14 && <option value="time14">14:00</option>}
-            {bookings.time17 && <option value="time17">17:00</option>}
-            {bookings.time18 && <option value="time18">18:00</option>}
-            {bookings.time19 && <option value="time19">19:00</option>}
-            {bookings.time20 && <option value="time20">20:00</option>}
+            {freeSlots}
           </select>
           {formik.touched.time && formik.errors.time ? (
             <div
@@ -247,9 +278,14 @@ function ReserveTableDetails({ fromDate, onReservationSubmit, bookings }) {
           >
             <option value="1">One</option>
             <option value="2">Two</option>
-            <option value="4">Up to Four</option>
-            <option value="8">Up to Eight</option>
-            <option value="16">Up to Sixteen</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+            <option value="7">Seven</option>
+            <option value="8">Eight</option>
+            <option value="9">Nine</option>
+            <option value="10">Ten</option>
           </select>
           {formik.touched.diners && formik.errors.diners ? (
             <div
