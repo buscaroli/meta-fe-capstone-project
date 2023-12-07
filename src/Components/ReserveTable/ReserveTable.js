@@ -17,7 +17,6 @@ function ReserveTable() {
 
   // update today as per selected date from the date-picker
   const getEnteredDate = (day) => {
-    console.log('ReserveTable - selected date: ', day)
     setSelectedDay(day)
   }
 
@@ -33,7 +32,6 @@ function ReserveTable() {
 
   useEffect(() => {
     initializeTimes()
-    // fetchDesiredSlots()
   }, [])
 
   useEffect(() => {
@@ -42,11 +40,11 @@ function ReserveTable() {
 
   const onReservationSubmit = async (data) => {
     setReservationData(data)
-    // console.log('ReserveTable - Submitting data:\n', data)
     console.log('ReserveTable - reservationData: ', reservationData)
 
-    const submission = await submitAPI(data)
-    console.log('ReserveTable - submission: ', submission)
+    const submitted = await submitAPI(data)
+    console.log('ReserveTable - submitted: ', submitted)
+    fetchDesiredSlots()
   }
 
   return (

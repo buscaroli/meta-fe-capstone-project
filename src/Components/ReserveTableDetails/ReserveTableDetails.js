@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRef } from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import styles from './ReserveTableDetails.module.css'
@@ -17,6 +18,7 @@ function ReserveTableDetails({
   //     </option>
   //   ))
 
+  const timeRef = useRef('')
   const freeSlots = todaysFreeSlots.map((slot) => (
     <option key={slot} value={slot}>
       {slot}
@@ -28,14 +30,14 @@ function ReserveTableDetails({
     getEnteredDate(e.target.value)
   }
 
-  const handleTime = (e) => {
-    console.log('******** ', e.target.value)
-    console.log('######### , ', freeSlots)
-    if (freeSlots.length === 0) {
-      console.log('EMPTY!!!!!!!!!')
-      e.target.value = ''
-    }
-  }
+  // const handleTime = (e) => {
+  //   console.log('******** ', e.target.value)
+  //   console.log('######### , ', freeSlots)
+  //   if (freeSlots.length === 0) {
+  //     console.log('EMPTY!!!!!!!!!')
+  //     e.target.value = ''
+  //   }
+  // }
 
   return (
     <Formik
@@ -64,8 +66,8 @@ function ReserveTableDetails({
         preferences: Yup.string(),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        console.log('formik values: ', values)
-        onReservationSubmit(values)
+        const updatedValues = { ...values, time: timeRef.current.value }
+        onReservationSubmit(updatedValues)
         setSubmitting(false)
       }}
     >
@@ -197,7 +199,7 @@ function ReserveTableDetails({
             id="time"
             {...formik.getFieldProps('time')}
             className={styles.timeInput}
-            onBlur={handleTime}
+            ref={timeRef}
           >
             {freeSlots}
           </select>

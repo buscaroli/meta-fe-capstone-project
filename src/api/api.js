@@ -37,24 +37,8 @@ const fetchAPI = (date) => {
 }
 
 const submitAPI = ({ day, time }) => {
-  console.log(
-    'API - submitAPI - avaiableTimesByDate - BEFORE: ',
-    availableTimesByDate
-  )
-  console.log('API - submitAPI - day: ', day)
-  console.log('API - submitAPI - time: ', time)
-  if (availableTimesByDate[day].length === 1) {
-    availableTimesByDate[day] = []
-  }
-  availableTimesByDate[day] = availableTimesByDate[day].filter((slot) => {
-    console.log('API - submitAPI loop - slot: ', slot)
-    console.log('API - submitAPI loop - slot === time: ', slot === time)
-    return slot !== time
-  })
-
-  console.log(
-    'API - submitAPI - avaiableTimesByDate - AFTER: ',
-    availableTimesByDate
+  availableTimesByDate[day] = availableTimesByDate[day].filter(
+    (slot) => slot !== time
   )
 
   return new Promise((resolve, reject) => {
