@@ -179,6 +179,7 @@ function ReserveTableDetails({
           </label>
           <select
             id="time"
+            data-testid="timeId"
             {...formik.getFieldProps('time')}
             className={styles.timeInput}
             ref={timeRef}
