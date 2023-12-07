@@ -12,7 +12,7 @@ function ReserveTableDetails({
 }) {
   const timeRef = useRef('')
   const freeSlots = todaysFreeSlots.map((slot) => (
-    <option key={slot} value={slot}>
+    <option data-testid="timeOptionTest" key={slot} value={slot}>
       {slot}
     </option>
   ))
@@ -41,7 +41,7 @@ function ReserveTableDetails({
         email: Yup.string().email('Invalid email address').required('Required'),
         phone: Yup.string(),
         day: Yup.date().required('Required'),
-        time: Yup.string().required('Please select a free slot to book'),
+        time: Yup.string().required('Choose a time'),
         outdoor: Yup.string(),
         occasion: Yup.string(),
         diners: Yup.string().required('Select seats'),
@@ -61,7 +61,7 @@ function ReserveTableDetails({
         >
           {/* User Details */}
           <label htmlFor="firstName" className={styles.firstNameLabel}>
-            FirstName
+            First Name
           </label>
           <input
             type="text"
@@ -83,7 +83,7 @@ function ReserveTableDetails({
           ) : null}
 
           <label htmlFor="lastName" className={styles.lastNameLabel}>
-            LastName
+            Last Name
           </label>
           <input
             type="text"
@@ -305,6 +305,7 @@ function ReserveTableDetails({
           ) : null}
 
           <button
+            data-testid="reserveButton"
             type="submit"
             className={styles.reserveButton}
             form="reserveTableForm"
