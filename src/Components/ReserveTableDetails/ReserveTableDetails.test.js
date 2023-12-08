@@ -3,8 +3,12 @@ import {
   screen,
   fireEvent,
   waitFor,
+  act,
   findAllByTestId,
+  logRoles,
 } from '@testing-library/react'
+import React from 'react'
+
 import { MemoryRouter as Router } from 'react-router-dom'
 import ReserveTable from '../ReserveTable/ReserveTable'
 import ReserveTableDetails from './ReserveTableDetails'
@@ -48,7 +52,7 @@ test('Checks the time input is initially empty', async () => {
   )
 
   const timeElement = screen.getByTestId('timeId')
-  expect(timeElement.textContent).toBe('')
+  expect(timeElement.textContent).toBe('Choose')
 })
 
 test('Checks button is initially disabled', () => {
@@ -66,53 +70,87 @@ test('Checks button is initially disabled', () => {
 
 test.skip('Checks button is enabled if firstName, lastName, email, date, time and diners are entered', async () => {
   const btnSubmit = jest.fn()
+  const dateHandler = jest.fn()
+  const times = ['10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00']
+
   render(
     <Router>
       <ReserveTable>
         <ReserveTableDetails
           fromDate={'2023-09-14'}
-          todaysFreeSlots={['10:00', '11:00']}
+          todaysFreeSlots={times}
           onReservationSubmit={btnSubmit}
+          getEnteredDate={dateHandler}
         />
       </ReserveTable>
     </Router>
   )
-
   const btn = screen.getByTestId('reserveButton')
-  const fname = screen.getByLabelText('First Name')
-  const lname = screen.getByLabelText('Last Name')
-  const email = screen.getByLabelText('eMail')
-  const date = screen.getByLabelText('Date')
-  const time = screen.getByLabelText('Time')
-  const diners = screen.getByLabelText('Diners')
-  const optionElement = await screen.findByText(/16:00/i)
-  const options = await screen.findAllByTestId('timeOptionTest')
-
-  fireEvent.change(fname, { target: { value: 'Samuel' } })
-  fireEvent.change(lname, { target: { value: 'Smith' } })
-  fireEvent.change(email, { target: { value: 'samuel@email.com' } })
-
-  fireEvent.focus(date)
-  fireEvent.change(date, { target: { value: '2023-09-15' } })
-  fireEvent.blur(date)
-
-  fireEvent.focus(time)
-  fireEvent.blur(time)
-
-  fireEvent.click(diners)
-  fireEvent.change(diners, { target: { value: '1' } })
-  fireEvent.blur(diners)
-
-  fireEvent.click(optionElement)
-
-  fireEvent.click(options[0])
-
-  fireEvent.click(btn)
-
-  console.log('******')
-  console.log(date.value, time.value, options.value)
 
   await waitFor(() => {
-    expect(btnSubmit).toHaveBeenCalled()
+    expect(btn).toBeDisabled()
+  })
+
+  const fname = screen.getByLabelText('First Name')
+  fireEvent.change(fname, { target: { value: 'Samuel' } })
+  fireEvent.click(btn)
+  await waitFor(() => {
+    expect(btn).toBeDisabled()
+  })
+
+  const lname = screen.getByLabelText('Last Name')
+  fireEvent.change(lname, { target: { value: 'Smith' } })
+  await waitFor(() => {
+    expect(btn).toBeDisabled()
+  })
+  const email = screen.getByLabelText('eMail')
+  fireEvent.change(email, { target: { value: 'samuel@email.com' } })
+  await waitFor(() => {
+    expect(btn).toBeDisabled()
+  })
+
+  const date = screen.getByLabelText('Date')
+
+  fireEvent.mouseOver(date)
+  fireEvent.mouseMove(date)
+  fireEvent.mouseDown(date)
+  date.focus()
+  fireEvent.change(date, { target: { value: '2023-09-12' } })
+  fireEvent.mouseUp(date)
+  fireEvent.click(date)
+
+  await waitFor(() => {
+    expect(btn).toBeDisabled()
+  })
+
+  const diners = screen.getByLabelText('Diners')
+  fireEvent.change(diners, { target: { value: '2' } })
+  await waitFor(() => {
+    expect(btn).toBeDisabled()
+  })
+
+  const time = screen.getByTestId('timeId')
+  fireEvent.click(time)
+  fireEvent.change(time, { target: { value: '14:00' } }) // not working
+
+  await waitFor(() => {
+    expect(btn).toBeDisabled()
+  })
+
+  let optEl
+  await waitFor(() => {
+    optEl = screen.getAllByText(/1?:00/i)
+  }, 1000)
+
+  fireEvent.mouseOver(optEl[1])
+  fireEvent.mouseMove(optEl[1])
+  fireEvent.mouseDown(optEl[1])
+  optEl[1].focus()
+  fireEvent.mouseUp(optEl[1])
+  fireEvent.click(optEl[1])
+
+  await waitFor(() => {
+    expect(btn).not.toBeDisabled()
+    // expect(btn).toHaveAttribute('disabled', '')
   })
 })

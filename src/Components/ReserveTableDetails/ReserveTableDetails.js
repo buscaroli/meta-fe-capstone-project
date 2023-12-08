@@ -184,6 +184,9 @@ function ReserveTableDetails({
             className={styles.timeInput}
             ref={timeRef}
           >
+            <option data-testid="timeOptionTest" key="choose">
+              Choose
+            </option>
             {freeSlots}
           </select>
           {formik.touched.time && formik.errors.time ? (
