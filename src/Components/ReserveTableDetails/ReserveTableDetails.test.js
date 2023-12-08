@@ -98,6 +98,11 @@ test.skip('Checks button is enabled if firstName, lastName, email, date, time an
     expect(btn).toBeDisabled()
   })
 
+  fireEvent.click(btn)
+  await waitFor(() => {
+    expect(btnSubmit).not.toHaveBeenCalled()
+  })
+
   const lname = screen.getByLabelText('Last Name')
   fireEvent.change(lname, { target: { value: 'Smith' } })
   await waitFor(() => {
@@ -152,5 +157,10 @@ test.skip('Checks button is enabled if firstName, lastName, email, date, time an
   await waitFor(() => {
     expect(btn).not.toBeDisabled()
     // expect(btn).toHaveAttribute('disabled', '')
+  })
+
+  fireEvent.click(btn)
+  await waitFor(() => {
+    expect(btnSubmit).toHaveBeenCalled()
   })
 })
