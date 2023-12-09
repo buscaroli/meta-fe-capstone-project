@@ -10,34 +10,16 @@ function ReserveTableDetails({
   todaysFreeSlots,
   getEnteredDate,
 }) {
-  // const freeSlots = todaysFreeSlots
-  //   .filter((slot) => slot[1] !== 0)
-  //   .map((slot, idx) => (
-  //     <option key={idx} value={slot[0]}>
-  //       {slot[0]}
-  //     </option>
-  //   ))
-
   const timeRef = useRef('')
   const freeSlots = todaysFreeSlots.map((slot) => (
-    <option key={slot} value={slot}>
+    <option data-testid="timeOptionTest" key={slot} value={slot}>
       {slot}
     </option>
   ))
 
   const dateHandler = (e) => {
-    // console.log('********* ', e.target.value)
     getEnteredDate(e.target.value)
   }
-
-  // const handleTime = (e) => {
-  //   console.log('******** ', e.target.value)
-  //   console.log('######### , ', freeSlots)
-  //   if (freeSlots.length === 0) {
-  //     console.log('EMPTY!!!!!!!!!')
-  //     e.target.value = ''
-  //   }
-  // }
 
   return (
     <Formik
@@ -59,14 +41,15 @@ function ReserveTableDetails({
         email: Yup.string().email('Invalid email address').required('Required'),
         phone: Yup.string(),
         day: Yup.date().required('Required'),
-        time: Yup.string().required('Please select a free slot to book'),
+        time: Yup.string().required('Choose a time'),
         outdoor: Yup.string(),
         occasion: Yup.string(),
         diners: Yup.string().required('Select seats'),
         preferences: Yup.string(),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        const updatedValues = { ...values, time: timeRef.current.value }
+        // const updatedValues = { ...values, time: timeRef.current.value }
+        const updatedValues = { ...values }
         onReservationSubmit(updatedValues)
         setSubmitting(false)
       }}
@@ -79,7 +62,7 @@ function ReserveTableDetails({
         >
           {/* User Details */}
           <label htmlFor="firstName" className={styles.firstNameLabel}>
-            FirstName
+            First Name
           </label>
           <input
             type="text"
@@ -101,7 +84,7 @@ function ReserveTableDetails({
           ) : null}
 
           <label htmlFor="lastName" className={styles.lastNameLabel}>
-            LastName
+            Last Name
           </label>
           <input
             type="text"
@@ -197,10 +180,14 @@ function ReserveTableDetails({
           </label>
           <select
             id="time"
+            data-testid="timeId"
             {...formik.getFieldProps('time')}
             className={styles.timeInput}
             ref={timeRef}
           >
+            <option data-testid="timeOptionTest" key="choose">
+              Choose
+            </option>
             {freeSlots}
           </select>
           {formik.touched.time && formik.errors.time ? (
@@ -322,9 +309,11 @@ function ReserveTableDetails({
           ) : null}
 
           <button
+            data-testid="reserveButton"
             type="submit"
             className={styles.reserveButton}
             form="reserveTableForm"
+            disabled={!(formik.isValid && formik.dirty)}
           >
             Reserve a Table
           </button>
