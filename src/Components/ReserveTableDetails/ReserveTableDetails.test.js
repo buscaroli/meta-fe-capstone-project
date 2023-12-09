@@ -68,7 +68,7 @@ test('Checks button is initially disabled', () => {
   expect(btn).toHaveAttribute('disabled')
 })
 
-test('Checks button is enabled if firstName, lastName, email, date, time and diners are entered', async () => {
+test('Checks button is enabled if firstName, lastName, email, date and time are entered', async () => {
   const onReservationSubmit = jest.fn()
   // const dateHandler = jest.fn()
   const times = ['10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00']
