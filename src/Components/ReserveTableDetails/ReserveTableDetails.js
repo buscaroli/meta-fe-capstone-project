@@ -48,7 +48,8 @@ function ReserveTableDetails({
         preferences: Yup.string(),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        const updatedValues = { ...values, time: timeRef.current.value }
+        // const updatedValues = { ...values, time: timeRef.current.value }
+        const updatedValues = { ...values }
         onReservationSubmit(updatedValues)
         setSubmitting(false)
       }}

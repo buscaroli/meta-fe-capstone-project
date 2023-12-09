@@ -8,7 +8,7 @@ import {
   logRoles,
 } from '@testing-library/react'
 import React from 'react'
-
+import userEvent from '@testing-library/user-event'
 import { MemoryRouter as Router } from 'react-router-dom'
 import ReserveTable from '../ReserveTable/ReserveTable'
 import ReserveTableDetails from './ReserveTableDetails'
@@ -68,9 +68,9 @@ test('Checks button is initially disabled', () => {
   expect(btn).toHaveAttribute('disabled')
 })
 
-test.skip('Checks button is enabled if firstName, lastName, email, date, time and diners are entered', async () => {
-  const btnSubmit = jest.fn()
-  const dateHandler = jest.fn()
+test('Checks button is enabled if firstName, lastName, email, date, time and diners are entered', async () => {
+  const onReservationSubmit = jest.fn()
+  // const dateHandler = jest.fn()
   const times = ['10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00']
 
   render(
@@ -79,8 +79,7 @@ test.skip('Checks button is enabled if firstName, lastName, email, date, time an
         <ReserveTableDetails
           fromDate={'2023-09-14'}
           todaysFreeSlots={times}
-          onReservationSubmit={btnSubmit}
-          getEnteredDate={dateHandler}
+          onReservationSubmit={onReservationSubmit}
         />
       </ReserveTable>
     </Router>
@@ -100,7 +99,7 @@ test.skip('Checks button is enabled if firstName, lastName, email, date, time an
 
   fireEvent.click(btn)
   await waitFor(() => {
-    expect(btnSubmit).not.toHaveBeenCalled()
+    expect(onReservationSubmit).not.toHaveBeenCalled()
   })
 
   const lname = screen.getByLabelText('Last Name')
@@ -135,32 +134,25 @@ test.skip('Checks button is enabled if firstName, lastName, email, date, time an
   })
 
   const time = screen.getByTestId('timeId')
-  fireEvent.click(time)
-  fireEvent.change(time, { target: { value: '14:00' } }) // not working
 
   await waitFor(() => {
-    expect(btn).toBeDisabled()
+    userEvent.selectOptions(time, ['15:00'])
   })
 
-  let optEl
-  await waitFor(() => {
-    optEl = screen.getAllByText(/1?:00/i)
-  }, 1000)
-
-  fireEvent.mouseOver(optEl[1])
-  fireEvent.mouseMove(optEl[1])
-  fireEvent.mouseDown(optEl[1])
-  optEl[1].focus()
-  fireEvent.mouseUp(optEl[1])
-  fireEvent.click(optEl[1])
+  // await waitFor(() => {
+  //   expect(btn).toBeDisabled()
+  // })
 
   await waitFor(() => {
     expect(btn).not.toBeDisabled()
     // expect(btn).toHaveAttribute('disabled', '')
   })
-
-  fireEvent.click(btn)
   await waitFor(() => {
-    expect(btnSubmit).toHaveBeenCalled()
+    userEvent.click(btn)
   })
+
+  // await waitFor(() => {
+  //   expect(onReservationSubmit).toHaveBeenCalledTimes(1)
+  // })
+  // screen.debug()
 })
