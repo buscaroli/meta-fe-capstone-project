@@ -309,6 +309,7 @@ function ReserveTableDetails({
           ) : null}
 
           <button
+            aria-label="On Click"
             data-testid="reserveButton"
             type="submit"
             className={styles.reserveButton}
