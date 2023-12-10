@@ -71,7 +71,10 @@ const linksData = [
 
 function Footer() {
   return (
-    <footer className={styles.container}>
+    <footer
+      aria-label="Footer with logo and links"
+      className={styles.container}
+    >
       <div className={styles.logoContainer}>
         <img
           className={styles.logo}
