@@ -4,7 +4,7 @@ import StarRating from '../StarRating/StarRating'
 
 function Review({ name, picture, rating, review }) {
   return (
-    <article aria-label="Customer Reviews" className={styles.container}>
+    <article aria-label="Customer Review" className={styles.container}>
       <div className={styles.ratingContainer}>
         <h6 className={styles.ratingText}>Rating:</h6>
         <StarRating rating={rating} />
