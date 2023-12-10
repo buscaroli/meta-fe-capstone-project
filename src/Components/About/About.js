@@ -12,7 +12,7 @@ const store = {
 
 function About() {
   return (
-    <section id="about">
+    <section aria-label="About" id="about">
       <div className={styles.container}>
         <h2 className={styles.title}>{store.title}</h2>
         <h4 className={styles.city}>{store.city}</h4>

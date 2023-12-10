@@ -12,7 +12,7 @@ const store = {
 
 function Hero() {
   return (
-    <section id="hero" className={styles.hero}>
+    <section aria-label="Hero Section" id="hero" className={styles.hero}>
       <h2 className={styles.title}>{store.title}</h2>
       <h4 className={styles.city}>{store.city}</h4>
       <p className={styles.description}>{store.description}</p>
