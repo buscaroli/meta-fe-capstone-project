@@ -14,7 +14,7 @@ function Header() {
       <div className={styles.logo}>
         <img src={logo} alt="logo of the restaurant, showing a lemon" />
       </div>
-      <nav className={styles.nav}>
+      <nav aria-label="primary" className={styles.nav}>
         <ul className={styles.list}>
           <li>
             <a
