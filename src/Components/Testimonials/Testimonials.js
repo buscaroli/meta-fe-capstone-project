@@ -45,7 +45,7 @@ function Testimonials() {
   }, [])
 
   return (
-    <section className={styles.container}>
+    <section aria-label="Customer Testimonials" className={styles.container}>
       <h5 className={styles.sectionTitle}>Testimonials</h5>
       <div className={styles.reviews}>
         <div className={styles.review1}>

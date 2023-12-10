@@ -7,7 +7,7 @@ import ReserveTable from '../ReserveTable/ReserveTable'
 
 function Main() {
   return (
-    <main>
+    <main id="main" aria-label="main content">
       <Hero showButton={true} />
     </main>
   )

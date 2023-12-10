@@ -49,7 +49,7 @@ function ReserveTable() {
   }
 
   return (
-    <section className={styles.container}>
+    <section aria-label="Reserve Table" className={styles.container}>
       <h5 data-testid="reserveTableHeading" className={styles.title}>
         Reserve a Table
       </h5>
