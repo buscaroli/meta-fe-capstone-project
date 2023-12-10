@@ -2,9 +2,9 @@ import React from 'react'
 import styles from './LinksColumn.module.css'
 
 function LinksColumn({ data, pos }) {
-  const links = data[pos].links.map((link) => {
+  const links = data[pos].links.map((link, idx) => {
     return (
-      <div style={{ listStyle: 'none' }} key={link.address}>
+      <div style={{ listStyle: 'none' }} key={`${link.address}-${idx}`}>
         <a
           style={{ color: '#EDEFEE', textDecoration: 'none' }}
           href={link.address}
