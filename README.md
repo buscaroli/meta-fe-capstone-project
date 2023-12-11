@@ -12,6 +12,10 @@ Learn Frontend development implementing the UI/UX and logic.
 
 ## Technologies used
 
+- UX
+  - User Persona
+  - User Journey
+  - Heuristics
 - UI
   - Figma
 - HTML
