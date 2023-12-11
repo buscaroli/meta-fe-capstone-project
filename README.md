@@ -19,6 +19,8 @@ Learn Frontend development implementing the UI/UX and logic.
 - UI
   - Figma
 - HTML
+  - Meta tags
+  - Open Graph Protocol
   - semantic HTML
 - CSS
   - CSS3
